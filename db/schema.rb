@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_151333) do
+ActiveRecord::Schema.define(version: 2022_09_16_153156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,15 @@ ActiveRecord::Schema.define(version: 2022_09_16_151333) do
     t.text "contents"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "office_id"
   end
 
   create_table "attendance_records", force: :cascade do |t|
     t.datetime "arrival_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id"
+    t.integer "event_id"
   end
 
   create_table "dues", force: :cascade do |t|
@@ -67,7 +70,12 @@ ActiveRecord::Schema.define(version: 2022_09_16_151333) do
     t.string "permissions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id"
   end
 
+  add_foreign_key "announcements", "offices"
+  add_foreign_key "attendance_records", "events"
+  add_foreign_key "attendance_records", "members"
   add_foreign_key "dues", "members"
+  add_foreign_key "offices", "members"
 end
