@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Announcements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Send time</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Contents</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= announcement.send_time %></td>
+        <td><%= announcement.title %></td>
+        <td><%= announcement.category %></td>
+        <td><%= announcement.contents %></td>
+        <td><%= link_to 'Show', announcement %></td>
+        <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+        <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Announcement', new_announcement_path %>

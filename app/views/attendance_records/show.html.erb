@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Arrival time:</strong>
+  <%= @attendance_record.arrival_time %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_record_path(@attendance_record) %> |
+<%= link_to 'Back', attendance_records_path %>

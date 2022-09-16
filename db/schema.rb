@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_142758) do
+ActiveRecord::Schema.define(version: 2022_09_16_151333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "announcements", force: :cascade do |t|
+    t.datetime "send_time"
+    t.string "title"
+    t.string "category"
+    t.text "contents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attendance_records", force: :cascade do |t|
+    t.datetime "arrival_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dues", force: :cascade do |t|
     t.string "purpose"
@@ -25,6 +40,16 @@ ActiveRecord::Schema.define(version: 2022_09_16_142758) do
     t.integer "member_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "meeting_time"
+    t.string "location"
+    t.time "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email"
     t.string "first_name"
@@ -33,6 +58,13 @@ ActiveRecord::Schema.define(version: 2022_09_16_142758) do
     t.string "classification"
     t.string "major"
     t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "title"
+    t.string "permissions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
