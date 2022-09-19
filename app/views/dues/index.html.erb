@@ -16,7 +16,9 @@
       <tr>
         <td><%= due.purpose %></td>
         <td><%= due.transaction_date %></td>
-        <td><%= link_to 'Show', due %></td>
+        <% if current_user.admin %>
+          <td><%= link_to 'Show', due %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_due_path(due) %></td>
         <td><%= link_to 'Destroy', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
