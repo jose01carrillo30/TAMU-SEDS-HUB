@@ -4,6 +4,7 @@ class DuesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_due, only: %i[show edit update destroy]
+  before_action :admin_access, only: [:Show]
 
   # GET /dues or /dues.json
   def index
