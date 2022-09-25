@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_25_173558) do
+ActiveRecord::Schema.define(version: 2022_09_25_215510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_09_25_173558) do
     t.datetime "arrival_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "member_id"
+    t.integer "user_id"
     t.integer "event_id"
   end
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2022_09_25_173558) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "amount_due", precision: 8, scale: 2
     t.decimal "amount_paid", precision: 8, scale: 2
-    t.integer "member_id"
+    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2022_09_25_173558) do
     t.string "permissions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "member_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2022_09_25_173558) do
 
   add_foreign_key "announcements", "offices"
   add_foreign_key "attendance_records", "events"
-  add_foreign_key "attendance_records", "users", column: "member_id"
-  add_foreign_key "dues", "users", column: "member_id"
-  add_foreign_key "offices", "users", column: "member_id"
+  add_foreign_key "attendance_records", "users"
+  add_foreign_key "dues", "users"
+  add_foreign_key "offices", "users"
 end
