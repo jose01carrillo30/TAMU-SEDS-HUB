@@ -12,7 +12,7 @@ class User < ApplicationRecord
       user.avatar_url = auth.info.image
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      p "auth:"
+      p "auth:" # TODO: remove
       p auth
     end
   end
