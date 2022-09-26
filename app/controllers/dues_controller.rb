@@ -1,4 +1,5 @@
 class DuesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_due, only: %i[ show edit update destroy ]
 
   # GET /dues or /dues.json
