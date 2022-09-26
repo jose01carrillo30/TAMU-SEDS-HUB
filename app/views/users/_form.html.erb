@@ -11,11 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-    <%# TODO: prevent from modifying this %>
-  </div>
+  <div>
+    <%= "Email" %><br>
+    <%= user.email %>
+  </div><br>
 
   <div class="field">
     <%= form.label :first_name %>
