@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/home'
   devise_for :users, controllers: {
-    # registrations: 'users/registrations',
-    # sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
@@ -15,6 +12,6 @@ Rails.application.routes.draw do
   resources :events
   resources :dues
   resources :users
-  root 'pages#home'
+  root 'announcements#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

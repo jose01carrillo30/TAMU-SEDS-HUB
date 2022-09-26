@@ -1,8 +1,0 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<% if current_user %>
-    <h2><%= current_user.email %></h2>
-    <%= button_to "Logout", destroy_user_session_path %>
-<% else %>
-<% end %>
