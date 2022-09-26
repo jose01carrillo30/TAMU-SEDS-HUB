@@ -37,7 +37,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || root_path
+    # Detect if this is an incomplete (and therefore new) profile
+    # TODO: remove some of these checks if we decide particular fields such as major are optional
+    if current_user.pronouns.nil? or current_user.classification.nil? or current_user.major.nil? or current_user.phone_number.nil?
+      return edit_user_path(current_user)
+    end
+    return stored_location_for(resource_or_scope) || root_path
   end
 
   private

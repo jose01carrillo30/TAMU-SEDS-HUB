@@ -22,7 +22,7 @@ class Users::SessionsController < Devise::SessionsController
     new_user_session_path
   end
 
-  def after_sign_in_path_for(resource_or_scope)
+  def after_sign_in_path_for(resource_or_scope) # TODO: I don't know if this is ever actually called?
     stored_location_for(resource_or_scope) || root_path
   end
   # protected
