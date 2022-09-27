@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "members/index", type: :view do
+RSpec.describe "users/index", type: :view do
   before(:each) do
-    assign(:members, [
-      Member.create!(
+    assign(:users, [
+      User.create!(
         email: "Email",
         first_name: "First Name",
         last_name: "Last Name",
@@ -12,7 +12,7 @@ RSpec.describe "members/index", type: :view do
         major: "Major",
         phone_number: "Phone Number"
       ),
-      Member.create!(
+      User.create!(
         email: "Email",
         first_name: "First Name",
         last_name: "Last Name",
@@ -24,7 +24,7 @@ RSpec.describe "members/index", type: :view do
     ])
   end
 
-  it "renders a list of members" do
+  it "renders a list of users" do
     render
     assert_select "tr>td", text: "Email".to_s, count: 2
     assert_select "tr>td", text: "First Name".to_s, count: 2
