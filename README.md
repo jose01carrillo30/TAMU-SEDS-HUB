@@ -159,6 +159,16 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
+<!-- FEATURE -->
+* Roles
+* Users
+* Events
+* Announcements 
+* Dues
+* Attendence Records
+
+
+
 <!-- ROADMAP -->
 ## Roadmap
 
