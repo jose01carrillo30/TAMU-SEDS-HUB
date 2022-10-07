@@ -198,13 +198,11 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Product Lead - Jose Carrillo - jcarri877@tamu.edu
+
 Scrum Master - Tyler Nichols
 
 Members:
-David Hung
-Kelton Chesshire
-Samuel He
-Lily Wang
+David Hung, Kelton Chesshire, Samuel He, Lily Wang
 
 Project Link: [https://github.com/jose01carrillo30/TAMU-SEDS-HUB/](https://github.com/jose01carrillo30/TAMU-SEDS-HUB/)
 
