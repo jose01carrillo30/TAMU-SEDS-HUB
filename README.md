@@ -105,14 +105,8 @@ Use the `BLANK_README.md` to get started.
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [![Rails][Rails.org]][Rails-url]
-* [![Next][Next.js]][Next-url]
+* [![Postgres][Postgres.org]][Postgres-url]
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -255,6 +249,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [product-screenshot]: images/homepage.JPG
 [Rails.org]: https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white
 [Rails-url]: https://rubyonrails.org/
+[Postgres.org]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://www.postgresql.org/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
