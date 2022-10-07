@@ -194,21 +194,19 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Product Lead - Jose Carrillo - jcarri877@tamu.edu
+Scrum Master - Tyler Nichols
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Members:
+David Hung
+Kelton Chesshire
+Samuel He
+Lily Wang
+
+Project Link: [https://github.com/jose01carrillo30/TAMU-SEDS-HUB/](https://github.com/jose01carrillo30/TAMU-SEDS-HUB/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
