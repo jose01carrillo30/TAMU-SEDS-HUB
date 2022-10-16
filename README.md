@@ -85,16 +85,11 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This repository holds the source code for the TAMU SEDS Administration webpage.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+This project is apart of the CSCE 431 Software Engineering class using the AGILE devleopement process.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+Project Description: "You will work in a project group to complete a project, through an application of an engineering approach to computer software design and development. Every project requires complete implementation, documentation, and demonstration of the solution. The focus is not only on the final product but also on design methodology, management process, and teamwork. At the end of the semester, each group will make a public presentation to the class describing and demonstrating their work."
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -113,7 +108,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started (TO BE CHANGED)
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
@@ -173,7 +168,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap (TO BE CHANGED)
 
 - [x] Add Changelog
 - [x] Add back to top links
