@@ -106,7 +106,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 
 <!-- GETTING STARTED -->
-## Getting Started (TO BE CHANGED)
+## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
@@ -157,7 +157,7 @@ http://127.0.0.1:3000
 
 
 <!-- ROADMAP -->
-## Roadmap (TO BE CHANGED)
+## Roadmap
 
 - [x] Sprint 1
 - [x] Sprint 2
