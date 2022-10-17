@@ -46,6 +46,11 @@
     <%= form.text_field :phone_number %>
   </div>
 
+  <div class="field">
+    <%= form.label :role if can? :manage, User %>
+    <%= form.select :role, [['Admin', 'admin'], ['Default','default']] if can? :manage, User %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
