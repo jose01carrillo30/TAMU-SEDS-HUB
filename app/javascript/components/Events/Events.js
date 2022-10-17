@@ -6,7 +6,6 @@ const Events = () => {
     useEffect(()=>{
         //Get all of our events from API
         //Update events in our state
-        
         axios.get('/events.json')
         .then(resp => {
             setEvents(resp.data)

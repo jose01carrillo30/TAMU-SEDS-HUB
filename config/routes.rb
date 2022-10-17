@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :attendance_records
   resources :events
   resources :dues
-  resources :members
+  resources :users
 
   get '*path', to: 'pages#index', via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
