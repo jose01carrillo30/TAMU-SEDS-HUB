@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "members/show", type: :view do
+RSpec.describe "users/show", type: :view do
   before(:each) do
-    @member = assign(:member, Member.create!(
+    @user = assign(:user, User.create!(
       email: "Email",
       first_name: "First Name",
       last_name: "Last Name",
