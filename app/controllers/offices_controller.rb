@@ -1,4 +1,5 @@
 class OfficesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_office, only: %i[ show edit update destroy ]
 
