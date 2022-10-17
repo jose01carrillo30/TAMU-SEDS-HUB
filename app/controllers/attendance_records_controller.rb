@@ -1,4 +1,5 @@
 class AttendanceRecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_attendance_record, only: %i[ show edit update destroy ]
 
   # GET /attendance_records or /attendance_records.json

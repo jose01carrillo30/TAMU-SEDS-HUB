@@ -1,78 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-testdate1 = 1.week.ago
-testdate2 = 2.week.ago
-testdate3 = 3.week.ago
-testdate4 = 4.week.ago
-testdate5 = 5.week.ago
-
-
-announcements = Announcement.create([
-    {
-        send_time: testdate1,
-        title: "test_title",
-        category: "test_cat",
-        contents: "test_contents",
-        created_at: testdate2,
-        updated_at: testdate3,
-    }
+User.create!([
+  {email: "jcarri877@tamu.edu", first_name: "Jose", last_name: "Carrillo", pronouns: "he/him", classification: "U4", major: "CPCS", phone_number: "9157994069", uid: "115599485721522811654", avatar_url: "https://lh3.googleusercontent.com/a/ALm5wu2GQ1wP3RbdD4xgyG8mNLcojqzWRJRHUQuwuRjF=s96-c", provider: "google_oauth2"}
 ])
-
-attendance_records = AttendanceRecord.create([
-    {
-        arrival_time: testdate1,
-        created_at: testdate2,
-        updated_at: testdate3,        
-    }
+Announcement.create!([
+  {send_time: "2022-10-07 21:04:00", title: "Test Announcement", category: "General", contents: "This is a test message by the development team!", office_id: nil}
 ])
-
-dues = Due.create([
-    {
-        purpose: "test_purpose",
-        transaction_date: testdate1,
-        created_at: testdate2,
-        updated_at: testdate3,
-        amount_due: 2.0,
-        amount_paid: 1.0,        
-    }
+AttendanceRecord.create!([
+  {arrival_time: "2022-10-07 21:09:00", user_id: nil, event_id: nil}
 ])
-
-events = Event.create([
-    {
-        name: "test_name",
-        description: "test_description",
-        meeting_time: testdate1,
-        location: "test_location",
-        duration: testdate4,
-        created_at: testdate2,
-        updated_at: testdate3,
-    }
+Due.create!([
+  {purpose: "d", transaction_date: "2022-09-26 22:43:00", amount_due: nil, amount_paid: nil, user_id: nil},
+  {purpose: "aaa", transaction_date: "2022-09-25 21:59:00", amount_due: nil, amount_paid: nil, user_id: nil}
 ])
-
-members = Member.create([
-    {
-        email: "email",
-        first_name: "test_description",
-        last_name: testdate1,
-        pronouns: "test_location",
-        classification: "classification",
-        major: "major",
-        phone_number: "phone_number",
-        created_at: testdate2,
-        updated_at: testdate3,
-    }
+Event.create!([
+  {name: "Test Event", description: "This is a test event by the development team!", meeting_time: "2022-10-07 21:05:00", location: "Mars", duration: "2000-01-01 00:30:00"}
 ])
-
-offices = Office.create([
-    {
-        title: "titletest",
-        permissions: "perms",
-        created_at: testdate2,
-        updated_at: testdate3,        
-    }
+Office.create!([
+  {title: "President", permissions: "All", user_id: nil}
 ])
+>>>>>>> origin/test
