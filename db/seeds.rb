@@ -1,5 +1,5 @@
-User.create!([
-  {email: "jcarri877@tamu.edu", first_name: "Jose", last_name: "Carrillo", pronouns: "he/him", classification: "U4", major: "CPCS", phone_number: "9157994069", uid: "115599485721522811654", avatar_url: "https://lh3.googleusercontent.com/a/ALm5wu2GQ1wP3RbdD4xgyG8mNLcojqzWRJRHUQuwuRjF=s96-c", provider: "google_oauth2"}
+User.where(email: "jcarri877@tamu.edu").first_or_create([
+  {first_name: "Jose", last_name: "Carrillo", pronouns: "he/him", classification: "U4", major: "CPCS", phone_number: "9157994069", uid: "115599485721522811654", avatar_url: "https://lh3.googleusercontent.com/a/ALm5wu2GQ1wP3RbdD4xgyG8mNLcojqzWRJRHUQuwuRjF=s96-c", provider: "google_oauth2"}
 ])
 Announcement.create!([
   {send_time: "2022-10-07 21:04:00", title: "Test Announcement", category: "General", contents: "This is a test message by the development team!", office_id: nil}
