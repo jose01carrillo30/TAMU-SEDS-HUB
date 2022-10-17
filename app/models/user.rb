@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  validates :first_name, :last_name, presence: true
+  # validates :email, uniqueness: true
+  validates_uniqueness_of :email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
