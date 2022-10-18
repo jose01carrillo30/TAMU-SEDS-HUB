@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OfficesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_office, only: %i[ show edit update destroy ]
+  before_action :set_office, only: %i[show edit update destroy]
 
   # GET /offices or /offices.json
   def index
@@ -9,8 +11,7 @@ class OfficesController < ApplicationController
   end
 
   # GET /offices/1 or /offices/1.json
-  def show
-  end
+  def show; end
 
   # GET /offices/new
   def new
@@ -18,8 +19,7 @@ class OfficesController < ApplicationController
   end
 
   # GET /offices/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /offices or /offices.json
   def create
@@ -27,7 +27,7 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to office_url(@office), notice: "Office was successfully created." }
+        format.html { redirect_to office_url(@office), notice: 'Office was successfully created.' }
         format.json { render :show, status: :created, location: @office }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class OfficesController < ApplicationController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to office_url(@office), notice: "Office was successfully updated." }
+        format.html { redirect_to office_url(@office), notice: 'Office was successfully updated.' }
         format.json { render :show, status: :ok, location: @office }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,19 +54,20 @@ class OfficesController < ApplicationController
     @office.destroy
 
     respond_to do |format|
-      format.html { redirect_to offices_url, notice: "Office was successfully destroyed." }
+      format.html { redirect_to offices_url, notice: 'Office was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_office
-      @office = Office.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def office_params
-      params.require(:office).permit(:title, :permissions)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_office
+    @office = Office.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def office_params
+    params.require(:office).permit(:title, :permissions)
+  end
 end
