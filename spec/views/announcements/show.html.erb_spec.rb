@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "announcements/show", type: :view do
+RSpec.describe 'announcements/show', type: :view do
   before(:each) do
     @announcement = assign(:announcement, Announcement.create!(
-      title: "Title",
-      category: "Category",
-      contents: "MyText"
-    ))
+                                            title: 'Title',
+                                            category: 'Category',
+                                            contents: 'MyText'
+                                          ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/Category/)

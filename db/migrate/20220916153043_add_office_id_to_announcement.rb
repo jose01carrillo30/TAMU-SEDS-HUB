@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOfficeIdToAnnouncement < ActiveRecord::Migration[6.1]
   def change
     add_column :announcements, :office_id, :integer, index: true
