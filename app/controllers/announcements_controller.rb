@@ -4,6 +4,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements or /announcements.json
   def index
     @announcements = Announcement.all
+    render json: @announcements
   end
 
   # GET /announcements/1 or /announcements/1.json
@@ -13,6 +14,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/new
   def new
     @announcement = Announcement.new
+    render json: @announcement
   end
 
   # GET /announcements/1/edit
@@ -22,39 +24,18 @@ class AnnouncementsController < ApplicationController
   # POST /announcements or /announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
-
-    respond_to do |format|
-      if @announcement.save
-        format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully created." }
-        format.json { render :show, status: :created, location: @announcement }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: @announcement
   end
 
   # PATCH/PUT /announcements/1 or /announcements/1.json
   def update
-    respond_to do |format|
-      if @announcement.update(announcement_params)
-        format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully updated." }
-        format.json { render :show, status: :ok, location: @announcement }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
-      end
-    end
+    @announcement = Announcement.update(event_params)
+    render json: @announcement
   end
 
   # DELETE /announcements/1 or /announcements/1.json
   def destroy
     @announcement.destroy
-
-    respond_to do |format|
-      format.html { redirect_to announcements_url, notice: "Announcement was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private

@@ -17,4 +17,3 @@ Event.create!([
 Office.create!([
   {title: "President", permissions: "All", user_id: nil}
 ])
->>>>>>> origin/test

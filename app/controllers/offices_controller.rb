@@ -5,6 +5,7 @@ class OfficesController < ApplicationController
   # GET /offices or /offices.json
   def index
     @offices = Office.all
+    render json: @offices
   end
 
   # GET /offices/1 or /offices/1.json
@@ -14,6 +15,7 @@ class OfficesController < ApplicationController
   # GET /offices/new
   def new
     @office = Office.new
+    render json: @office
   end
 
   # GET /offices/1/edit
@@ -23,39 +25,18 @@ class OfficesController < ApplicationController
   # POST /offices or /offices.json
   def create
     @office = Office.new(office_params)
-
-    respond_to do |format|
-      if @office.save
-        format.html { redirect_to office_url(@office), notice: "Office was successfully created." }
-        format.json { render :show, status: :created, location: @office }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @office.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: @office
   end
 
   # PATCH/PUT /offices/1 or /offices/1.json
   def update
-    respond_to do |format|
-      if @office.update(office_params)
-        format.html { redirect_to office_url(@office), notice: "Office was successfully updated." }
-        format.json { render :show, status: :ok, location: @office }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @office.errors, status: :unprocessable_entity }
-      end
-    end
+    @office = Office.update(office_params)
+    render json: @office
   end
 
   # DELETE /offices/1 or /offices/1.json
   def destroy
     @office.destroy
-
-    respond_to do |format|
-      format.html { redirect_to offices_url, notice: "Office was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private

@@ -5,6 +5,7 @@ class DuesController < ApplicationController
   # GET /dues or /dues.json
   def index
     @dues = Due.all
+    render json: @dues
   end
 
   # GET /dues/1 or /dues/1.json
@@ -14,6 +15,7 @@ class DuesController < ApplicationController
   # GET /dues/new
   def new
     @due = Due.new
+    render json: @due
   end
 
   # GET /dues/1/edit
@@ -23,39 +25,18 @@ class DuesController < ApplicationController
   # POST /dues or /dues.json
   def create
     @due = Due.new(due_params)
-
-    respond_to do |format|
-      if @due.save
-        format.html { redirect_to due_url(@due), notice: "Due was successfully created." }
-        format.json { render :show, status: :created, location: @due }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @due.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: @due
   end
 
   # PATCH/PUT /dues/1 or /dues/1.json
   def update
-    respond_to do |format|
-      if @due.update(due_params)
-        format.html { redirect_to due_url(@due), notice: "Due was successfully updated." }
-        format.json { render :show, status: :ok, location: @due }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @due.errors, status: :unprocessable_entity }
-      end
-    end
+    @due = Event.update(event_params)
+    render json: @due
   end
 
   # DELETE /dues/1 or /dues/1.json
   def destroy
     @due.destroy
-
-    respond_to do |format|
-      format.html { redirect_to dues_url, notice: "Due was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private

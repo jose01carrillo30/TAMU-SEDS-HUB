@@ -5,6 +5,7 @@ class AttendanceRecordsController < ApplicationController
   # GET /attendance_records or /attendance_records.json
   def index
     @attendance_records = AttendanceRecord.all
+    render json: @attendance_record
   end
 
   # GET /attendance_records/1 or /attendance_records/1.json
@@ -14,6 +15,7 @@ class AttendanceRecordsController < ApplicationController
   # GET /attendance_records/new
   def new
     @attendance_record = AttendanceRecord.new
+    render json: @event
   end
 
   # GET /attendance_records/1/edit
@@ -23,39 +25,18 @@ class AttendanceRecordsController < ApplicationController
   # POST /attendance_records or /attendance_records.json
   def create
     @attendance_record = AttendanceRecord.new(attendance_record_params)
-
-    respond_to do |format|
-      if @attendance_record.save
-        format.html { redirect_to attendance_record_url(@attendance_record), notice: "Attendance record was successfully created." }
-        format.json { render :show, status: :created, location: @attendance_record }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @attendance_record.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: @attendance_record
   end
 
   # PATCH/PUT /attendance_records/1 or /attendance_records/1.json
   def update
-    respond_to do |format|
-      if @attendance_record.update(attendance_record_params)
-        format.html { redirect_to attendance_record_url(@attendance_record), notice: "Attendance record was successfully updated." }
-        format.json { render :show, status: :ok, location: @attendance_record }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @attendance_record.errors, status: :unprocessable_entity }
-      end
-    end
+    @attendance_record = AttendanceRecord.update(attendance_record_params)
+    render json: @attendance_record
   end
 
   # DELETE /attendance_records/1 or /attendance_records/1.json
   def destroy
     @attendance_record.destroy
-
-    respond_to do |format|
-      format.html { redirect_to attendance_records_url, notice: "Attendance record was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
