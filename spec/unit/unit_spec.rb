@@ -1,33 +1,33 @@
-# location: spec/unit/unit_spec.rb
+# location: spec/unit/unit_spec_announcements.rb
 require 'rails_helper'
 
-RSpec.describe Book, type: :model do
+RSpec.describe Announcement, type: :model do
   subject do
-    described_class.new(title: 'harry potter', author: 'jk rolling', pub_date: '01/02/2000', price: '10.99')
+    described_class.new(send_time: DateTime.new(2001, 2, 3, 4, 5, 6), title: 'Test Announcement', category: 'J.K. Rowling', contents: 'gobbledey-gook')
   end
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
+  
+  it 'is not valid without a send time' do
+    subject.send_time = nil
+    expect(subject).not_to be_valid
+  end
 
-  it 'is not valid without a name' do
+  it 'is not valid without a title' do
     subject.title = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without an author' do
-    subject.author = nil
+  it 'is not valid without a category' do
+    subject.category = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a date' do
-    subject.pub_date = nil
+  it 'is not valid without contents' do
+    subject.contents = nil
     expect(subject).not_to be_valid
   end
-
-  it 'is not valid without a price' do
-    subject.price = nil
-    expect(subject).not_to be_valid
-  end
-
 end
+

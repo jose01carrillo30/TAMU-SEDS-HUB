@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_153156) do
+ActiveRecord::Schema.define(version: 2022_10_17_162418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_09_16_153156) do
     t.datetime "arrival_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "member_id"
+    t.integer "user_id"
     t.integer "event_id"
   end
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2022_09_16_153156) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "amount_due", precision: 8, scale: 2
     t.decimal "amount_paid", precision: 8, scale: 2
-    t.integer "member_id"
+    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -53,8 +53,16 @@ ActiveRecord::Schema.define(version: 2022_09_16_153156) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "members", force: :cascade do |t|
-    t.string "email"
+  create_table "offices", force: :cascade do |t|
+    t.string "title"
+    t.string "permissions"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "pronouns"
@@ -63,19 +71,16 @@ ActiveRecord::Schema.define(version: 2022_09_16_153156) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "offices", force: :cascade do |t|
-    t.string "title"
-    t.string "permissions"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "member_id"
+    t.string "uid"
+    t.string "avatar_url"
+    t.string "provider"
+    t.string "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "announcements", "offices"
   add_foreign_key "attendance_records", "events"
-  add_foreign_key "attendance_records", "members"
-  add_foreign_key "dues", "members"
-  add_foreign_key "offices", "members"
+  add_foreign_key "attendance_records", "users"
+  add_foreign_key "dues", "users"
+  add_foreign_key "offices", "users"
 end
