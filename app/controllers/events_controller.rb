@@ -3,8 +3,8 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
-    render json: @events
+    events = Event.all
+    render json: events
   end
 
   # GET /events/1 or /events/1.json
@@ -13,8 +13,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
-    render json: @event
+    event = Event.new
   end
 
   # GET /events/1/edit
@@ -23,19 +22,21 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
-    render json: @event
+    event = Event.create(event_params)
+    render json: event
   end
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
-    @event = Event.update(event_params)
-    render json: @event
+    event = Event.find(params[:id])
+    event.update(event_params)
+    render json: event
   end
 
   # DELETE /events/1 or /events/1.json
   def destroy
-    @event.destroy
+    event = Event.find(params[:id])
+    event.destroy
   end
 
   private
@@ -46,6 +47,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :description, :meeting_time, :location, :duration)
+      params.require(:event).permit(:name, :description, :meeting_time, :location, :duration, :id, :created_at, :updated_at)
     end
 end
