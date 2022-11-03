@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
-    render json: @users
+    users = User.all
+    render json: users
   end
 
   # GET /users/1 or /users/1.json
@@ -14,8 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
-    render json: @user
+    user = User.new
   end
 
   # GET /users/1/edit
@@ -24,19 +23,21 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
-    render json: @user
+    user = User.new(user_params)
+    render json: user
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user.update(user_params)
-    render json: @user
+    user = User.find(params[:id])
+    user.update(user_params)
+    render json: user
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
+    user = User.find(params[:id])
+    user.destroy
   end
 
   private

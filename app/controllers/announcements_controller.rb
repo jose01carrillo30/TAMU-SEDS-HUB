@@ -3,8 +3,8 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements or /announcements.json
   def index
-    @announcements = Announcement.all
-    render json: @announcements
+    announcements = Announcement.all
+    render json: announcements
   end
 
   # GET /announcements/1 or /announcements/1.json
@@ -13,8 +13,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/new
   def new
-    @announcement = Announcement.new
-    render json: @announcement
+    announcement = Announcement.new
   end
 
   # GET /announcements/1/edit
@@ -23,19 +22,21 @@ class AnnouncementsController < ApplicationController
 
   # POST /announcements or /announcements.json
   def create
-    @announcement = Announcement.new(announcement_params)
-    render json: @announcement
+    announcement = Announcement.new(announcement_params)
+    render json: announcement
   end
 
   # PATCH/PUT /announcements/1 or /announcements/1.json
   def update
-    @announcement = Announcement.update(event_params)
-    render json: @announcement
+    announcement = Announcement.find(params[:id])
+    announcement.update(event_params)
+    render json: announcement
   end
 
   # DELETE /announcements/1 or /announcements/1.json
   def destroy
-    @announcement.destroy
+    announcement = Announcement.find(params[:id])
+    announcement.destroy
   end
 
   private

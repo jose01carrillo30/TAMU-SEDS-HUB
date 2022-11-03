@@ -4,8 +4,8 @@ class DuesController < ApplicationController
 
   # GET /dues or /dues.json
   def index
-    @dues = Due.all
-    render json: @dues
+    dues = Due.all
+    render json: dues
   end
 
   # GET /dues/1 or /dues/1.json
@@ -14,8 +14,7 @@ class DuesController < ApplicationController
 
   # GET /dues/new
   def new
-    @due = Due.new
-    render json: @due
+    due = Due.new
   end
 
   # GET /dues/1/edit
@@ -24,19 +23,20 @@ class DuesController < ApplicationController
 
   # POST /dues or /dues.json
   def create
-    @due = Due.new(due_params)
-    render json: @due
-  end
+    due = Due.new(due_params)
+    render json: due
 
   # PATCH/PUT /dues/1 or /dues/1.json
   def update
-    @due = Event.update(event_params)
-    render json: @due
+    due = Due.find(params[:id])
+    due.update(event_params)
+    render json: due
   end
 
   # DELETE /dues/1 or /dues/1.json
   def destroy
-    @due.destroy
+    due = Due.find(params[:id])
+    due.destroy
   end
 
   private
@@ -49,4 +49,5 @@ class DuesController < ApplicationController
     def due_params
       params.require(:due).permit(:purpose, :transaction_date)
     end
+  end
 end

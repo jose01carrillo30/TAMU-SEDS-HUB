@@ -4,8 +4,8 @@ class AttendanceRecordsController < ApplicationController
 
   # GET /attendance_records or /attendance_records.json
   def index
-    @attendance_records = AttendanceRecord.all
-    render json: @attendance_record
+    attendance_record = AttendanceRecord.all
+    render json: attendance_record
   end
 
   # GET /attendance_records/1 or /attendance_records/1.json
@@ -14,8 +14,7 @@ class AttendanceRecordsController < ApplicationController
 
   # GET /attendance_records/new
   def new
-    @attendance_record = AttendanceRecord.new
-    render json: @event
+    attendance_record = AttendanceRecord.new
   end
 
   # GET /attendance_records/1/edit
@@ -24,19 +23,21 @@ class AttendanceRecordsController < ApplicationController
 
   # POST /attendance_records or /attendance_records.json
   def create
-    @attendance_record = AttendanceRecord.new(attendance_record_params)
-    render json: @attendance_record
+    attendance_record = AttendanceRecord.new(attendance_record_params)
+    render json: attendance_record
   end
 
   # PATCH/PUT /attendance_records/1 or /attendance_records/1.json
   def update
-    @attendance_record = AttendanceRecord.update(attendance_record_params)
-    render json: @attendance_record
+    attendance_record = AttendanceRecord.find(params[:id])
+    attendance_record.update(attendance_r ecord_params)
+    render json: attendance_record
   end
 
   # DELETE /attendance_records/1 or /attendance_records/1.json
   def destroy
-    @attendance_record.destroy
+    attendance_record = AttendanceRecord.find(params[:id])
+    attendance_record.destroy
   end
 
   private
