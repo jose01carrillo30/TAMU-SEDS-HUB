@@ -16,8 +16,8 @@
     <% @attendance_records.each do |attendance_record| %>
       <tr>
         <td><%= attendance_record.arrival_time %></td>
-        <td><%= User.where(id: attendance_record.user_id).last.full_name %></td>
-        <td><%= Event.where(id: attendance_record.event_id).last.name %></td>
+        <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
+        <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
         <td><%= link_to 'Show', attendance_record %></td>
         <td><%= link_to 'Edit', edit_attendance_record_path(attendance_record) %></td>
         <td><%= link_to 'Destroy', attendance_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>

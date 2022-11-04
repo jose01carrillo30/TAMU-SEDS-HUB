@@ -1,13 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Send time:</strong>
-  <%= @announcement.send_time %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @announcement.title %>
+  <h1>
+    <%= @announcement.title %>
+  </h1>
 </p>
 
 <p>
@@ -18,6 +14,22 @@
 <p>
   <strong>Contents:</strong>
   <%= @announcement.contents %>
+</p>
+
+<p>
+  <small>
+    Created by 
+    <%= @announcement.office_id %> on 
+    <%= @announcement.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
+  </small>
+</p>
+
+<p>
+  <small>
+  Last edited by 
+  <%= @announcement.editor_id %> on 
+  <%= @announcement.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
+  </small>
 </p>
 
 <%= link_to 'Edit', edit_announcement_path(@announcement) %> |

@@ -2,10 +2,13 @@
 
 <h1>Announcements</h1>
 
+<%= link_to 'New Announcement', new_announcement_path if can? :create, Announcement %>
+<br>
+<br>
+
 <table>
   <thead>
     <tr>
-      <th>Send time</th>
       <th>Title</th>
       <th>Category</th>
       <th>Contents</th>
@@ -14,9 +17,8 @@
   </thead>
 
   <tbody>
-    <% @announcements.each do |announcement| %>
+    <% @announcements.reverse_each do |announcement| %>
       <tr>
-        <td><%= announcement.send_time %></td>
         <td><%= announcement.title %></td>
         <td><%= announcement.category %></td>
         <td><%= announcement.contents %></td>
@@ -29,5 +31,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Announcement', new_announcement_path if can? :create, Announcement %>
