@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'csv'
 
 class UsersController < ApplicationController
   load_and_authorize_resource
@@ -69,5 +70,16 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :pronouns, :classification, :major, :phone_number, :role)
+  end
+
+  def export
+    @users = Users.all #.where(organization_id: current_user.organization_id)
+
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=users.csv"
+      end
+    end
   end
 end

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
   end
+
+  get 'users/export', to: 'users#export' # Note: this line must go before `resources :user`
+
   resources :announcements
   resources :offices
   resources :attendance_records
