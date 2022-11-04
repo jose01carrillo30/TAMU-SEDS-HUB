@@ -5,5 +5,15 @@
   <%= @attendance_record.arrival_time %>
 </p>
 
+<p>
+  <strong>Name:</strong>
+  <%= User.where(id: @attendance_record.user_id).last.full_name %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= Event.where(id: @attendance_record.event_id).last.name %>
+</p>
+
 <%= link_to 'Edit', edit_attendance_record_path(@attendance_record) %> |
 <%= link_to 'Back', attendance_records_path %>

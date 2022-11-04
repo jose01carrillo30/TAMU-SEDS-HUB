@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
 class Announcement < ApplicationRecord
-    
-    validates :title, :category, :contents, presence: true
+    validates :send_time, :title, :category, :contents, :office_id, presence: true
 end
