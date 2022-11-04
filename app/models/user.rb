@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :first_name, :last_name, presence: true
+  validates :email, :first_name, :last_name, :pronouns, :classification, :major, :phone_number, :uid, :avatar_url, :provider, :role, presence: true
   # validates :email, uniqueness: true
   validates_uniqueness_of :email
   # Include default devise modules. Others available are:
