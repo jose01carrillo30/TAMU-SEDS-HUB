@@ -28,11 +28,11 @@
             </label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 
-            <% if current_user.admin %>
-                <li><%= link_to 'Show', due %></li>
+            <li><%= link_to 'Show', due %></li>
+            <% if defined? @admin%>
+              <li><<%= link_to 'Edit', edit_due_path(due) if can? :update, Due %></li>
+              <li><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Due %></li>
             <% end %>
-            <li><<%= link_to 'Edit', edit_due_path(due) if can? :update, Due %></li>
-            <li><%= link_to 'Delete', due, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Due %></li>
             </ul>
           </div>
         </td>
