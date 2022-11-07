@@ -16,11 +16,11 @@
       <tr>
         <td><%= due.purpose %></td>
         <td><%= due.transaction_date %></td>
-        <% if current_user.admin %>
-          <td><%= link_to 'Show', due %></td>
+        <td><%= link_to 'Show', due %></td>
+        <% if defined? @admin%>
+          <td><%= link_to 'Edit', edit_due_path(due) %></td>
+          <td><%= link_to 'Destroy', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <td><%= link_to 'Edit', edit_due_path(due) %></td>
-        <td><%= link_to 'Destroy', due, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
