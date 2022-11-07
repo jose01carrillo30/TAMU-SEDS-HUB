@@ -10,10 +10,7 @@
   <%= @due.transaction_date %>
 </p>
 
-<p>
-  <strong>Paid:</strong>
-  <%= @due.paid %>
-</p>
-
-<%= link_to 'Edit', edit_due_path(@due) %> |
+<% if defined? @admin%>
+  <%= link_to 'Edit', edit_due_path(@due) %>
+<% end %>
 <%= link_to 'Back', dues_path %>
