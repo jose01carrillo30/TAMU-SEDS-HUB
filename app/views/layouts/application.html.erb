@@ -3,8 +3,11 @@
   <head>
     <title>SedsHubApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <html data-theme="light"></html>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,11 +19,7 @@
   </head>
 
   <body>
-  <% if flash.any? %>
-    <% flash.each do |key, value| -%>
-      <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-    <% end -%>
-  <% end %>
+
 
   <%= link_to 'Announcements', announcements_path %>
   <%= link_to 'Offices', offices_path %>
@@ -39,5 +38,19 @@
   <% end %>
 
   <%= yield %>
+  
   </body>
+  <% if flash.alert %>
+    <% flash.each do |key, value| -%>
+      <div x-data="{open: true}" x-show="open" x-transition class="alert alert-error shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span><%= value %></span>
+        </div>
+        <div class="flex-none">
+          <button @click="open = false" class="btn btn-sm">Close</button>
+        </div>
+      </div>
+    <% end -%>
+  <% end %>
 </html>
