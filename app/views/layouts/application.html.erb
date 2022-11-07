@@ -19,14 +19,21 @@
   </head>
 
   <body>
-
-
-  <%= link_to 'Announcements', announcements_path %>
-  <%= link_to 'Offices', offices_path %>
-  <%= link_to 'Attendance_records', attendance_records_path %>
-  <%= link_to 'Events', events_path %>
-  <%= link_to 'Dues', dues_path %>
-  <%= link_to 'Users', users_path %>
+  <div class="navbar bg-base-200 rounded-md shadow-md">
+  <div class="flex-1">
+    <%= link_to 'SEDSHub', root_path, class: "btn btn-ghost normal-case text-xl" %>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal p-0">
+      <li><%= link_to 'Announcements', announcements_path %></li>
+      <li><%= link_to 'Offices', offices_path %></li>
+      <li><%= link_to 'Attendance Records', attendance_records_path %></li>
+      <li><%= link_to 'Events', events_path %></li>
+      <li><%= link_to 'Dues', dues_path %></li>
+      <li><%= link_to 'Users', users_path %></li>
+    </ul>
+  </div>
+</div>
 
   <% if current_user %>
     <%= current_user.email -%>
@@ -40,12 +47,38 @@
   <%= yield %>
   
   </body>
-  <% if flash.alert %>
+  <% if flash[:alert] %>
     <% flash.each do |key, value| -%>
       <div x-data="{open: true}" x-show="open" x-transition class="alert alert-error shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span><%= value %></span>
+        </div>
+        <div class="flex-none">
+          <button @click="open = false" class="btn btn-sm">Close</button>
+        </div>
+      </div>
+    <% end -%>
+  <% end %>
+  <% if flash[:success] %>
+    <% flash.each do |key, value| -%>
+      <div x-data="{open: true}" x-show="open" x-transition class="alert alert-success shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span><%= value %></span>
+        </div>
+        <div class="flex-none">
+          <button @click="open = false" class="btn btn-sm">Close</button>
+        </div>
+      </div>
+    <% end -%>
+  <% end %>
+  <% if flash[:notice] %>
+    <% flash.each do |key, value| -%>
+      <div x-data="{open: true}" x-show="open" x-transition class="alert alert-info shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span><%= value %></span>
         </div>
         <div class="flex-none">
           <button @click="open = false" class="btn btn-sm">Close</button>
