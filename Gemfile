@@ -70,3 +70,5 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'rubocop'
 
 gem 'seed_dump'
+
+gem "tailwindcss-rails", "~> 2.0"

@@ -39,3 +39,5 @@ yarn-debug.log*
 
 # Ignore IDE files
 /.vscode
+/app/assets/builds/*
+!/app/assets/builds/.keep

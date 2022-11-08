@@ -1,8 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1 class="text-lg my-5">Events</h1>
 
-<table>
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Meeting time</th>
+        <th>Location</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.description %></td>
+        <td><%= event.meeting_time %></td>
+        <td><%= event.location %></td>
+        <td><%= event.duration %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<%
+=begin%>
+ <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -28,8 +57,12 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> 
+<%
+=end%>
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<div class="flex justify-center">
+<%= button_to 'New Event', new_event_path, class: 'btn', method: :get %>
+</div>
