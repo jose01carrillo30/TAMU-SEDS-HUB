@@ -43,5 +43,5 @@
 <br>
 
 <div class="flex justify-center">
-<%= button_to 'New Announcement', new_announcement_path, class: 'btn', method: :get %>
+<%= button_to 'New Announcement', new_announcement_path, class: 'btn', method: :get if can? :create, Announcement %>
 </div>
