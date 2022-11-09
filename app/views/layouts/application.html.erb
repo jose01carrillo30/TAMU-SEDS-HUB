@@ -4,10 +4,9 @@
     <title>SedsHubApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
-    <html data-theme="sedshubtheme"></html>
+    <html data-theme="emerald"></html>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -18,7 +17,7 @@
     </style>
   </head>
 
-  <body>
+  <body class>
   <div class="navbar bg-gray-100 rounded-md shadow-md">
     <div class="flex-1">
       <%= link_to root_path, class: "flex items-center hover:bg-slate-300 px-3 py-1 rounded-md" do%>
@@ -35,7 +34,7 @@
         <li><%= link_to 'Dues', dues_path, class: 'hover:bg-slate-300' %></li>
         <li><%= link_to 'Users', users_path, class: 'hover:bg-slate-300' %></li>
         <% if !current_user %>
-          <%= button_to 'Sign In', user_google_oauth2_omniauth_authorize_path, class: 'btn ml-1 bg-sky-500 hover:bg-sky-200' %>
+          <%= button_to 'Sign In', user_google_oauth2_omniauth_authorize_path, class: 'btn btn-secondary ml-1' %>
         <% else %>
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn ml-1 btn-ghost btn-circle avatar">
@@ -51,10 +50,11 @@
       </ul>
     </div>
   </div>
-
-  <%= yield %>
   
-  </body>
+  <div class = "mx-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
+    <%= yield %>
+  </div>
+
   <% if flash[:alert] %>
     <% flash.each do |key, value| -%>
       <div x-data="{open: true}" x-show="open" x-transition class="alert alert-error shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
@@ -94,4 +94,14 @@
       </div>
     <% end -%>
   <% end %>
+  
+<footer class="footer footer-center p-4 absolute bottom-0 overflow-hidden inset-x-0 text-base-content">
+  <div>
+    <p>Copyright © 2022 - All right reserved by <strong>TAMU SEDS</strong></p>
+  </div>
+</footer>
+
+
+  </body>
+  
 </html>
