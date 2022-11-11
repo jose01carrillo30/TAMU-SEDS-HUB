@@ -12,8 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :arrival_time %>
+    <%= form.label :arriva_time %>
     <%= form.datetime_select :arrival_time %>
+  </div>
+
+ <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.order(:last_name).map { |user| [user.full_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.select :event_id, Event.order(:name).map { |event| [event.name, event.id] }, include_blank: true, id: "id_of_the_event_id_select_box" %>
   </div>
 
   <div class="actions">
