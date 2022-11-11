@@ -16,6 +16,9 @@
       <tr>
         <td><%= due.purpose %></td>
         <td><%= due.transaction_date %></td>
+        <td><%= due.user_id %></td>
+        <td><%= due.amount_due %></td>
+        <td><%= due.amount_paid %></td>
         <td><%= link_to 'Show', due %></td>
         <% if defined? @admin%>
           <td><%= link_to 'Edit', edit_due_path(due) %></td>
