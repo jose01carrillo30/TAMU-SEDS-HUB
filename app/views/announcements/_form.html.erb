@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :send_time %>
-    <%= form.datetime_select :send_time %>
-  </div>
-
-  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -27,11 +22,17 @@
   </div>
 
   <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, [['General','general'],['Dues Reminder','dues reminder']] %>
+  </div>
+
+  <div class="field">
     <%= form.label :contents %>
     <%= form.text_area :contents %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
+    
   </div>
 <% end %>
