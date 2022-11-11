@@ -6,13 +6,17 @@ class Ability
   def initialize(user)
     # Define abilities for the user here. For example:
     can :read, [Announcement, Event]
-    return unless user.present?
-
-    can :read, Announcement
-    can [:update, :destroy], User, email: user.email
-    return unless user.role == 'admin'
+    if user.present?
+      if user.role == 'admin'
+        can :manage, :all
+      elsif user.role == 'moderator'
+        can :manage, [Announcement, Office, AttendanceRecord, Event, Due]   
+        can [:update, :destroy], User, email: user.email
+      elsif user.role == 'member'
+        can [:update, :destroy], User, email: user.email
+      end
+    end    
     
-    can :manage, :all
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
-  Roles = %i[admin default].freeze
+  Roles = %i[admin moderator member].freeze
   # :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable # add these if you want to handle passwords lol
   def is?(role)
     self.role == role.to_s
