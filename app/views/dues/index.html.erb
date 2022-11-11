@@ -27,7 +27,10 @@
               </svg>
             </label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-
+            <li><%= due.user_id %></li>
+            <li><%= due.amount_due %></li>
+            <li><%= due.amount_paid %></li>
+    
             <li><%= link_to 'Show', due %></li>
             <% if defined? @admin%>
               <li><<%= link_to 'Edit', edit_due_path(due) if can? :update, Due %></li>

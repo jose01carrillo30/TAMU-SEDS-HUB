@@ -6,8 +6,23 @@
 </p>
 
 <p>
-  <strong>Transaction date:</strong>
+  <strong>Transaction Date:</strong>
   <%= @due.transaction_date %>
+</p>
+
+<p>
+  <strong>Member ID:</strong>
+  <%= @due.user_id %>
+</p>
+
+<p>
+  <strong>Amount Due:</strong>
+  <%= @due.amount_due %>
+</p>
+
+<p>
+  <strong>Amount Paid:</strong>
+  <%= @due.amount_paid %>
 </p>
 
 <% if defined? @admin%>
