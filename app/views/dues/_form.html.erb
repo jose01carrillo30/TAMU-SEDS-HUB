@@ -21,6 +21,21 @@
     <%= form.datetime_select :transaction_date %>
   </div>
 
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_due %>
+    <%= form.text_field :amount_due %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_paid %>
+    <%= form.text_field :amount_paid %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
