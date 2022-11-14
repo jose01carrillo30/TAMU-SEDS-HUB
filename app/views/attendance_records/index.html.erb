@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if can? :modify, AttendanceRecord%>
 <h1 class="text-lg my-5 font-bold">Attendance Records</h1>
+<%else%>
+<h1 class="text-lg my-5 font-bold">Your Attendance Records</h1>
+<%end%>
 
 
 <div>
@@ -15,27 +19,52 @@
     </tr>
     </thead>
     <tbody>
-    <% @attendance_records.each do |attendance_record| %>
-      <tr>
-        <td><%= attendance_record.arrival_time %></td>
-        <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
-        <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
-        <td>
-          <div class="dropdown">
-            <label tabindex="0" class="btn btn-secondary btn-xs">
-              Options
-              <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </label>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><%= link_to 'Show', attendance_record %></li>
-            <li><%= link_to 'Edit', edit_attendance_record_path(attendance_record)%></li>
-            <li><%= link_to 'Delete', attendance_record, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-            </ul>
-          </div>
-        </td>
-      </tr>
+    <%if can? :modify, AttendanceRecord %>
+      <% @attendance_records.each do |attendance_record| %>
+        <tr>
+          <td><%= attendance_record.arrival_time %></td>
+          <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
+          <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
+          <td>
+            <div class="dropdown">
+              <label tabindex="0" class="btn btn-secondary btn-xs">
+                Options
+                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><%= link_to 'Show', attendance_record %></li>
+              <li><%= link_to 'Edit', edit_attendance_record_path(attendance_record)%></li>
+              <li><%= link_to 'Delete', attendance_record, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% @attendance_records.where(user_id: current_user.id).each do |attendance_record| %>
+        <tr>
+          <td><%= attendance_record.arrival_time %></td>
+          <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
+          <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
+          <td>
+            <div class="dropdown">
+              <label tabindex="0" class="btn btn-secondary btn-xs">
+                Options
+                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><%= link_to 'Show', attendance_record %></li>
+              <li><%= link_to 'Edit', edit_attendance_record_path(attendance_record)%></li>
+              <li><%= link_to 'Delete', attendance_record, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
