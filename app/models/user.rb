@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :email, :first_name, :last_name, :pronouns, :classification, :major, :phone_number, :uid, :avatar_url, :provider, :role, presence: true
+  validates :email, :first_name, :last_name, :uid, :avatar_url, :role, presence: true
   has_many :attendance_records
   has_many :events, through: :attendance_records
   def full_name
