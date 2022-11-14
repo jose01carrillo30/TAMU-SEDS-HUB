@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :email, :first_name, :last_name, :pronouns, :classification, :major, :phone_number, :uid, :avatar_url, :provider, :role, presence: true
+  validates :email, :first_name, :last_name, :uid, :avatar_url, :role, presence: true
   has_many :attendance_records
   has_many :events, through: :attendance_records
   def full_name
@@ -26,13 +26,14 @@ class User < ApplicationRecord
       user.avatar_url = auth.info.image
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
+      user.provider = auth.info.provider
       user.role = 'admin'
     end
   end
 
-  def self.from_google(email:, first_name:, last_name:, uid:, avatar_url:)
+  def self.from_google(email:, first_name:, last_name:, uid:, avatar_url:, provider:)
     # return nil unless email =~ /@mybusiness.com\z/ # change if we want to restrict certain email domains
-    create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url,
+    create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url, provider: provider,
                 role: 'admin').find_or_create_by!(email: email)
   end
 end
