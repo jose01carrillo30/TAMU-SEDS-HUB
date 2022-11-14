@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SedsHubApp</title>
+    <title>TAMU SEDSHub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= render 'application/favicon' %>
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <html data-theme="emerald"></html>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <style>
       .flash__alert   { color: red; }
       .flash__notice  { color: blue; }
@@ -15,29 +19,139 @@
     </style>
   </head>
 
-  <body>
-  <% if flash.any? %>
-    <% flash.each do |key, value| -%>
-      <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-    <% end -%>
-  <% end %>
+  <body class>
 
-  <%= link_to 'Announcements', announcements_path %>
-  <%= link_to 'Offices', offices_path %>
-  <%= link_to 'Attendance_records', attendance_records_path %>
-  <%= link_to 'Events', events_path %>
-  <%= link_to 'Dues', dues_path %>
-  <%= link_to 'Users', users_path %>
 
-  <% if current_user %>
-    <%= current_user.email -%>
-    <%= image_tag(current_user.avatar_url) -%>
-    <%# <%= link_to "Edit Account", edit_user_registration_path % %>
-    <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :get %>
-  <% else %>
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post  %>
-  <% end %>
+    <div class="drawer">
+      <input id="main-navigation-drawer" type="checkbox" class="drawer-toggle" /> 
+      <div class="drawer-content">
+          <!-- Navbar -->
+          <div class="w-full navbar bg-gray-200 shadow-lg">
+            <div class="flex-none lg:hidden">
+              <label for="main-navigation-drawer" class="btn btn-square btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+              </label>
+            </div> 
+            <div class="flex-1">
+              <%= link_to root_path, class: "flex items-center hover:bg-slate-300 px-3 py-1 rounded-md" do%>
+                 <%= image_tag "SedsLogo.png", class: "mr-3 h-8 sm:h-9", alt: "Flowbite Logo" %>
+                <span class="self-center text-xl font-semibold text-sky-600 whitespace-nowrap">SEDSHub</span>
+              <% end %>
+            </div>
+            <div class="flex-none hidden lg:block">
+              <ul class="menu menu-horizontal p-0">
+                <li><%= link_to 'Announcements', announcements_path, class: 'hover:bg-slate-300' %></li>
+                <li><%= link_to 'Offices', offices_path, class: 'hover:bg-slate-300' %></li>
+                <li><%= link_to 'Attendance Records', attendance_records_path, class: 'hover:bg-slate-300' %></li>
+                <li><%= link_to 'Events', events_path, class: 'hover:bg-slate-300' %></li>
+                <li><%= link_to 'Dues', dues_path, class: 'hover:bg-slate-300' %></li>
+                <li><%= link_to 'Users', users_path, class: 'hover:bg-slate-300' %></li>
+                <% if !current_user %>
+                  <%= button_to 'Sign In', user_google_oauth2_omniauth_authorize_path, class: 'btn btn-secondary ml-1' %>
+                <% else %>
+                <div class="dropdown dropdown-end">
+                  <label tabindex="0" class="btn ml-1 btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                      <%= image_tag(current_user.avatar_url) %>
+                    </div>
+                  </label>
+                  <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                    <li><%= link_to "Logout", destroy_user_session_path, data: {turbo: 'false'}, method: :get %></li>
+                  </ul>
+                  </div>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <!-- Page content here -->
+          <div class = "mx-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
+          <%= yield %>
+          </div>
 
-  <%= yield %>
+          <% if flash[:alert] %>
+            <% flash.each do |key, value| -%>
+              <div x-data="{open: true}" x-show="open" x-transition class="alert alert-error z-50 shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span><%= value %></span>
+                </div>
+                <div class="flex-none">
+                  <button @click="open = false" class="btn btn-sm">Close</button>
+                </div>
+              </div>
+            <% end -%>
+          <% end %>
+          <% if flash[:success] %>
+            <% flash.each do |key, value| -%>
+              <div x-data="{open: true}" x-show="open" x-transition class="alert alert-success z-50 shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <span><%= value %></span>
+                </div>
+                <div class="flex-none">
+                  <button @click="open = false" class="btn btn-sm">Close</button>
+                </div>
+              </div>
+            <% end -%>
+          <% end %>
+          <% if flash[:notice] %>
+            <% flash.each do |key, value| -%>
+              <div x-data="{open: true}" x-show="open" x-transition class="alert alert-info z-50 shadow-lg w-1/2 mx-auto absolute bottom-3 inset-x-0">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span><%= value %></span>
+                </div>
+                <div class="flex-none">
+                  <button @click="open = false" class="btn btn-sm">Close</button>
+                </div>
+              </div>
+            <% end -%>
+          <% end %>
+      
+          <footer class="footer footer-center p-4 absolute z-0 bottom-0 overflow-hidden inset-x-0 text-base-content">
+            <div>
+              <p>Copyright © 2022 - All right reserved by <strong>TAMU SEDS</strong></p>
+            </div>
+          </footer>
+
+
+
+      </div> 
+      <div class="drawer-side">
+        <label for="main-navigation-drawer" class="drawer-overlay"></label> 
+        <ul class="menu p-4 w-80 bg-base-100">
+          <!-- Sidebar content here -->
+            <% if !current_user %>
+              <div class="mt-2 mx-auto">
+                <%= button_to 'Sign In', user_google_oauth2_omniauth_authorize_path, class: 'btn btn-secondary ml-1' %>
+              </div>
+            <% else %>
+            <div class="dropdown dropdown-end mt-2">
+              <label tabindex="0" class="btn mt-1 btn-ghost">
+                <div class="avatar mr-2 -ml-1">
+                  <div class="w-10 rounded-full">
+                    <%= image_tag(current_user.avatar_url) %>
+                  </div>
+                </div>
+                <%= current_user.full_name%>
+              </label>
+              <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                <li><%= link_to "Logout", destroy_user_session_path, data: {turbo: 'false'}, method: :get %></li>
+              </ul>
+              </div>
+            <% end %>
+          <div class="divider"></div> 
+          <li><%= link_to 'Announcements', announcements_path, class: 'hover:bg-slate-300' %></li>
+          <li><%= link_to 'Offices', offices_path, class: 'hover:bg-slate-300' %></li>
+          <li><%= link_to 'Attendance Records', attendance_records_path, class: 'hover:bg-slate-300' %></li>
+          <li><%= link_to 'Events', events_path, class: 'hover:bg-slate-300' %></li>
+          <li><%= link_to 'Dues', dues_path, class: 'hover:bg-slate-300' %></li>
+          <li><%= link_to 'Users', users_path, class: 'hover:bg-slate-300' %></li>
+        </ul>  
+      </div>
+    </div>
+
+
   </body>
+  
 </html>

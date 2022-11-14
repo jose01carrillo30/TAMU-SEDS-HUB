@@ -1,2 +1,4 @@
-<h2>Log in to the Admin Dashboard</h2>
-<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post  %>
+<div class="flex flex-col items-center justify-center -mt-24 h-screen">
+    <h1 class="text-lg font-bold">Log in to the Admin Dashboard</h1>
+    <%= button_to "Sign in", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-primary mt-5"  %>
+</div>

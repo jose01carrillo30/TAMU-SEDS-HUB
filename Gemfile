@@ -32,6 +32,8 @@ gem 'cancancan'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rexml'
 
+gem "simple_calendar", "~> 2.4"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -48,6 +50,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'brakeman'
   gem 'spring'
+  gem 'rails_real_favicon'
 end
 
 group :test do
@@ -70,3 +73,5 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'rubocop'
 
 gem 'seed_dump'
+
+gem "cssbundling-rails", "~> 1.1"

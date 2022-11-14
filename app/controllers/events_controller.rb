@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = Event.order(:meeting_time).reverse_order
   end
 
   # GET /events/1 or /events/1.json
@@ -67,6 +67,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:name, :description, :meeting_time, :location, :duration)
+    params.require(:event).permit(:name, :description, :meeting_time, :location, :duration, :image)
   end
 end

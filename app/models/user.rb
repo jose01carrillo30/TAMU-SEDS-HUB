@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  validates :email, :first_name, :last_name, :uid, :avatar_url, :role, presence: true
   has_many :attendance_records
   has_many :events, through: :attendance_records
-  validates :first_name, :last_name, presence: true
   def full_name
     [first_name, last_name].join(" ")
   end
