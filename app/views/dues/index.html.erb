@@ -10,7 +10,7 @@
     <tr>
       <th>Purpose</th>
       <th>Transaction Date</th>
-      <th>Member ID</th>
+      <th>Member</th>
       <th>Amount Due</th>
       <th>Amount Paid</th>
       <th>Created At</th>
@@ -24,7 +24,7 @@
       <tr>
         <td><%= due.purpose %></td>
         <td><%= due.transaction_date %></td>
-        <td><%= due.user_id %></td>
+        <td><%= User.where(id: due.user_id)&.last&.full_name %></td>
         <td><%= due.amount_due %></td>
         <td><%= due.amount_paid %></td>
         <td><%= due.created_at %></td>
