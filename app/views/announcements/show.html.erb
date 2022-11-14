@@ -2,7 +2,7 @@
 
 <p>
   <h1>
-    <%= @announcement.title %>
+    <strong><%= @announcement.title %></strong>
   </h1>
 </p>
 
@@ -19,16 +19,18 @@
 <p>
   <small>
     Created by 
-    <%= @announcement.office_id %> on 
+    <%= User.find_by(email: @announcement.author_email).full_name %>, 
+    <%= @announcement.author_email %>, on 
     <%= @announcement.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
   </small>
 </p>
 
 <p>
   <small>
-  Last edited by 
-  <%= @announcement.editor_id %> on 
-  <%= @announcement.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
+    Last edited by 
+    <%= User.find_by(email: @announcement.editor_email).full_name %>, 
+    <%= @announcement.editor_email %>, on 
+    <%= @announcement.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
   </small>
 </p>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_04_184513) do
+ActiveRecord::Schema.define(version: 2022_11_11_224101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2022_11_04_184513) do
     t.text "contents"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "office_id"
-    t.integer "editor_id"
+    t.string "author_email"
+    t.string "editor_email"
   end
 
   create_table "attendance_records", force: :cascade do |t|
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2022_11_04_184513) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "announcements", "offices"
   add_foreign_key "attendance_records", "events"
   add_foreign_key "attendance_records", "users"
   add_foreign_key "dues", "users"
