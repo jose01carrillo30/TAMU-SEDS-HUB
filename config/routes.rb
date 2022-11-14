@@ -10,13 +10,16 @@ Rails.application.routes.draw do
   end
 
   get 'users/export', to: 'users#export' # Note: this line must go before `resources :user`
+  # get 'users/import', to: 'users#import'
 
   resources :announcements
   resources :offices
   resources :attendance_records
   resources :events
   resources :dues
-  resources :users
+  resources :users do 
+    collection { post :import }
+  end
   root 'announcements#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

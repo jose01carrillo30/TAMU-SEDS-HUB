@@ -35,4 +35,12 @@ class User < ApplicationRecord
     create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url,
                 role: 'admin').find_or_create_by!(email: email)
   end
+
+  require 'csv'
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      p row
+      User.create!(row.to_hash)
+    end
+  end
 end

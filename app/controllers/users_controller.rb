@@ -60,6 +60,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def import
+    User.import(params[:file])
+    redirect_to root_url, notice: "I want to cry"
+    p 'import called successfilly!'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -70,16 +76,5 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :pronouns, :classification, :major, :phone_number, :role)
-  end
-
-  def export
-    @users = Users.all #.where(organization_id: current_user.organization_id)
-
-    respond_to do |format|
-      format.csv do
-        response.headers['Content-Type'] = 'text/csv'
-        response.headers['Content-Disposition'] = "attachment; filename=users.csv"
-      end
-    end
   end
 end
