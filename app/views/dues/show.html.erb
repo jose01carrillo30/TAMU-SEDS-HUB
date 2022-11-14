@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="text-lg my-5 font-bold">Dues</h1>
+
+
 <p>
   <strong>Purpose:</strong>
   <%= @due.purpose %>
@@ -25,7 +28,15 @@
   <%= @due.amount_paid %>
 </p>
 
-<% if defined? @admin%>
-  <%= link_to 'Edit', edit_due_path(@due) %>
-<% end %>
+<p>
+  <strong>Created At:</strong>
+  <%= @due.created_at %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @due.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_due_path if can? :update, Due %>
 <%= link_to 'Back', dues_path %>
