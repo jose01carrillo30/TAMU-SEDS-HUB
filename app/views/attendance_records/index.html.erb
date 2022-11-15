@@ -8,7 +8,7 @@
 
 
 <div>
-  <table class="table w-full">
+  <table class="table w-full table-fixed">
     <!-- head -->
     <thead>
     <tr>
@@ -22,9 +22,9 @@
     <%if can? :modify, AttendanceRecord %>
       <% @attendance_records.each do |attendance_record| %>
         <tr>
-          <td><%= attendance_record.arrival_time %></td>
-          <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
-          <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
+          <td class="truncate"><%= attendance_record.arrival_time %></td>
+          <td class="truncate"><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
+          <td class="truncate"><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
           <td>
             <div class="dropdown">
               <label tabindex="0" class="btn btn-secondary btn-xs">

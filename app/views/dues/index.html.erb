@@ -4,7 +4,7 @@
 
 
 <div>
-  <table class="table w-full">
+  <table class="table w-full table-fixed">
     <!-- head -->
     <thead>
     <tr>
@@ -16,8 +16,8 @@
     <tbody>
     <% @dues.each do |due| %>
       <tr>
-        <td><%= due.purpose %></td>
-        <td><%= due.transaction_date %></td>
+        <td class="truncate"><%= due.purpose %></td>
+        <td class="truncate"><%= due.transaction_date %></td>
         <td>
           <div class="dropdown">
             <label tabindex="0" class="btn btn-secondary btn-xs">

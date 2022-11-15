@@ -3,7 +3,7 @@
 
 
 <div>
-  <table class="table w-full">
+  <table class="table w-full table-fixed">
     <!-- head -->
     <thead>
     <tr>
@@ -21,15 +21,15 @@
     <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.pronouns %></td>
-        <td><%= user.classification %></td>
-        <td><%= user.major %></td>
-        <td><%= user.phone_number %></td>
-        <td><%= user.role %></td>
-        <td>
+        <td class="truncate"><%= user.email %></td>
+        <td class="truncate"><%= user.first_name %></td>
+        <td class="truncate"><%= user.last_name %></td>
+        <td class="truncate"><%= user.pronouns %></td>
+        <td class="truncate"><%= user.classification %></td>
+        <td class="truncate"><%= user.major %></td>
+        <td class="truncate"><%= user.phone_number %></td>
+        <td class="truncate"><%= user.role %></td>
+        <td class="truncate">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-secondary btn-xs">
               Options

@@ -16,8 +16,8 @@
     <tbody>
     <% @announcements.reverse_each do |announcement| %>
       <tr>
-        <td><%= announcement.title %></td>
-        <td><%= announcement.category %></td>
+        <td class="truncate"><%= announcement.title %></td>
+        <td class="truncate"><%= announcement.category %></td>
         <td class="truncate"><%= announcement.contents %></td>
         <td>
           <div class="dropdown">
