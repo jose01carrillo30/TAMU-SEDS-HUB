@@ -20,6 +20,11 @@ RSpec.describe Due, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'is not valid without a amount_due' do
+    subject.amount_due = nil
+    expect(subject).not_to be_valid
+  end
+
   it 'is not valid without amount_due' do
     subject.amount_due = nil
     expect(subject).not_to be_valid
