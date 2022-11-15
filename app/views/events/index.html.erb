@@ -48,7 +48,7 @@
               <li><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Event %></li>
               </ul>
             </div>
-          <% else %>
+          <% elsif current_user %>
           <%= button_to 'Sign In', attendance_records_path, params: {arrival_time: DateTime.now, event_id: event.id, user_id: current_user.id}, method: :post, class: 'btn btn-primary btn-xs'%>
           <% end %>
           </td>
