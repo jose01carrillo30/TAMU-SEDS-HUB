@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class Due < ApplicationRecord
-  validates :purpose, :transaction_date, :amount_due, :amount_paid, :user_id, presence: true
+  validates :purpose, :transaction_date, :payment_type, :payment_status, :user_id, presence: true
 end
