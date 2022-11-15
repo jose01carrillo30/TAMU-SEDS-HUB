@@ -12,7 +12,8 @@
       <th>Transaction Date</th>
       <th>Member</th>
       <th>Payment Type</th>
-      <th>Payment Status</th>
+      <th>Is Paid</th>
+      <th>Amount Due</th>
       <th>Created At</th>
       <th>Updated At</th>
       <th><span class="sr-only">Modify</span></th>
@@ -24,8 +25,9 @@
         <td><%= due.purpose %></td>
         <td><%= due.transaction_date %></td>
         <td><%= User.where(id: due.user_id)&.last&.full_name %></td>
-        <td><%= due.payment_type %></td>
-        <td><%= due.payment_status %></td>
+        <td><%= due.due_type %></td>
+        <td><%= due.is_paid %></td>
+        <td><%= due.amount_due %></td>
         <td><%= due.created_at %></td>
         <td><%= due.updated_at %></td>
         <td>
