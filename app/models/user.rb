@@ -33,6 +33,6 @@ class User < ApplicationRecord
   def self.from_google(email:, first_name:, last_name:, uid:, avatar_url:)
     # return nil unless email =~ /@mybusiness.com\z/ # change if we want to restrict certain email domains
     create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url,
-                role: 'admin').find_or_create_by!(email: email)
+                role: 'member').find_or_create_by!(email: email)
   end
 end
