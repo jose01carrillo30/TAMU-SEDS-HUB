@@ -4,7 +4,7 @@
     <title>TAMU SEDSHub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= render 'application/favicon' %>
-    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.10.5/dist/cdn.min.js"></script>
     <html data-theme="emerald"></html>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -34,7 +34,7 @@
             </div> 
             <div class="flex-1">
               <%= link_to root_path, class: "flex items-center hover:bg-slate-300 px-3 py-1 rounded-md" do%>
-                 <%= image_tag "SedsLogo.png", class: "mr-3 h-8 sm:h-9", alt: "Flowbite Logo" %>
+                 <%= image_tag "SedsLogo.png", class: "mr-3 h-10", alt: "SEDSHub Logo" %>
                 <span class="self-center text-xl font-semibold text-sky-600 whitespace-nowrap">SEDSHub</span>
               <% end %>
             </div>
@@ -64,7 +64,7 @@
             </div>
           </div>
           <!-- Page content here -->
-          <div class = "mx-auto overflow-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
+          <div class = "mx-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
           <%= yield %>
           </div>
 
