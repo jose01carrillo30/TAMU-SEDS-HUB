@@ -9,6 +9,7 @@ class Ability
     return unless user.present?
 
     can :read, :all
+    can :create, AttendanceRecord
     can :update, User
     return unless user.role == 'admin'
 

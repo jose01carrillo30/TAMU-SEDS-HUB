@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SedsHubApp</title>
+    <title>TAMU SEDSHub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= render 'application/favicon' %>
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
     <html data-theme="emerald"></html>
     <%= csrf_meta_tags %>
@@ -10,7 +11,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag asset_path('logo.jpg') %>
+    
     <style>
       .flash__alert   { color: red; }
       .flash__notice  { color: blue; }
@@ -33,7 +34,7 @@
             </div> 
             <div class="flex-1">
               <%= link_to root_path, class: "flex items-center hover:bg-slate-300 px-3 py-1 rounded-md" do%>
-                <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                 <%= image_tag "SedsLogo.png", class: "mr-3 h-8 sm:h-9", alt: "Flowbite Logo" %>
                 <span class="self-center text-xl font-semibold text-sky-600 whitespace-nowrap">SEDSHub</span>
               <% end %>
             </div>
@@ -63,7 +64,7 @@
             </div>
           </div>
           <!-- Page content here -->
-          <div class = "mx-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
+          <div class = "mx-auto overflow-auto mt-5 max-w-5xl px-4 transition-all ease-in-out sm:px-6 xl:max-w-7xl xl:px-0">
           <%= yield %>
           </div>
 
@@ -107,7 +108,7 @@
             <% end -%>
           <% end %>
       
-          <footer class="footer footer-center p-4 absolute z-0 bottom-0 overflow-hidden inset-x-0 text-base-content">
+          <footer class="footer footer-center p-4 static z-0 bottom-0 overflow-hidden inset-x-0 text-base-content">
             <div>
               <p>Copyright © 2022 - All right reserved by <strong>TAMU SEDS</strong></p>
             </div>
