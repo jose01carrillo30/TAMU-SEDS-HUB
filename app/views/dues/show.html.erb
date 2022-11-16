@@ -20,12 +20,17 @@
 
 <p>
   <strong>Payment Type:</strong>
-  <%= @due.payment_type %>
+  <%= @due.due_type %>
 </p>
 
 <p>
-  <strong>Payment Status:</strong>
-  <%= @due.payment_status %>
+  <strong>Is Paid:</strong>
+  <%= @due.is_paid %>
+</p>
+
+<p>
+  <strong>Amount Due:</strong>
+  <%= @due.amount_due %>
 </p>
 
 <p>

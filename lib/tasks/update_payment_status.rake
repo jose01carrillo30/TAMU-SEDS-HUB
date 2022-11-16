@@ -11,21 +11,21 @@ namespace :dues_status do
         end
   
         #semester payment
-        if payment_type == 'semester' && Time.now > (transaction_date + 119.days) then
+        if due_type == 'semester' && Time.now > (transaction_date + 119.days) then
           updated_at = Dues.where('updated_at <= ?', Time.now - 119.days)
-          payment_status = 'not paid'
+          is_paid = 'not paid'
           dues.save
         end
   
         #year payment
-        if payment_type == 'year' && Time.now > (transaction_date + 365.days) then
+        if due_type == 'year' && Time.now > (transaction_date + 365.days) then
           updated_at = Dues.where('updated_at <= ?', Time.now - 365.days)
-          payment_status = 'not paid'
+          is_paid = 'not paid'
           dues.save
         end
   
         #lifetime payment
-        if payment_type == 'life' then
+        if due_type == 'life' then
           dues.save
         end
       end
