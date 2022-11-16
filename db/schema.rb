@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_11_231736) do
+ActiveRecord::Schema.define(version: 2022_11_16_003642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2022_11_11_231736) do
     t.decimal "amount_due", precision: 8, scale: 2
     t.decimal "amount_paid", precision: 8, scale: 2
     t.integer "user_id"
+    t.string "payment_type"
+    t.string "payment_status"
   end
 
   create_table "events", force: :cascade do |t|
