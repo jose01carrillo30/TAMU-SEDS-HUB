@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :email, :first_name, :last_name, :pronouns, :classification, :major, :phone_number, :uid, :avatar_url, :provider, :role, presence: true
+  validates :email, :first_name, :last_name, presence: true
   has_many :attendance_records
   has_many :events, through: :attendance_records
   def full_name
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
-  Roles = %i[admin default].freeze
+  Roles = %i[admin moderator member].freeze
   # :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable # add these if you want to handle passwords lol
   def is?(role)
     self.role == role.to_s
@@ -33,7 +33,7 @@ class User < ApplicationRecord
   def self.from_google(email:, first_name:, last_name:, uid:, avatar_url:)
     # return nil unless email =~ /@mybusiness.com\z/ # change if we want to restrict certain email domains
     create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url,
-                role: 'admin').find_or_create_by!(email: email)
+                role: 'member').find_or_create_by!(email: email)
   end
 
   require 'csv'

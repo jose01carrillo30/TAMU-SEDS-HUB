@@ -12,7 +12,7 @@
 
 <p>
   <strong>Meeting time:</strong>
-  <%= @event.meeting_time %>
+  <%= @event.meeting_time.strftime("%H:%M") %>
 </p>
 
 <p>
@@ -22,7 +22,12 @@
 
 <p>
   <strong>Duration:</strong>
-  <%= @event.duration %>
+  <%= @event.duration.strftime("%H:%M") %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @event.image, style: "wisth: 250px;" %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
