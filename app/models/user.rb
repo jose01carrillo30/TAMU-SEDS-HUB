@@ -39,8 +39,17 @@ class User < ApplicationRecord
   require 'csv'
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
+      p '-----------------------------'
       p row
-      User.create!(row.to_hash)
+      hashedRow = row.to_hash
+      if hashedRow["email"].blank? then
+        p "skipping row because no email provided!"
+        next
+      else
+        obj = User.find_or_create_by(email: hashedRow["email"])
+        # obj.update(row.to_hash.compact.merge(createdAtHash))
+        obj.update(row.to_hash.compact)
+      end
     end
   end
 end
