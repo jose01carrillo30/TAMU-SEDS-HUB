@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'csv'
 
 class UsersController < ApplicationController
   load_and_authorize_resource
@@ -65,6 +66,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    User.import(params[:file])
+    redirect_to root_url, notice: "I want to cry"
+    p 'import called successfilly!'
   end
 
   private
