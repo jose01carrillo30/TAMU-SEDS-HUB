@@ -47,7 +47,6 @@ class User < ApplicationRecord
         next
       else
         obj = User.find_or_create_by(email: hashedRow["email"])
-        # obj.update(row.to_hash.compact.merge(createdAtHash))
         obj.update(row.to_hash.compact)
       end
     end
