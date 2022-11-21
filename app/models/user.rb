@@ -35,4 +35,20 @@ class User < ApplicationRecord
     create_with(uid: uid, first_name: first_name, last_name: last_name, avatar_url: avatar_url,
                 role: 'member').find_or_create_by!(email: email)
   end
+
+  require 'csv'
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      p '-----------------------------'
+      p row
+      hashedRow = row.to_hash
+      if hashedRow["email"].blank? then
+        p "skipping row because no email provided!"
+        next
+      else
+        obj = User.find_or_create_by(email: hashedRow["email"])
+        obj.update(row.to_hash.compact)
+      end
+    end
+  end
 end

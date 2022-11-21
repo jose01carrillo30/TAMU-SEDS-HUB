@@ -4,6 +4,7 @@ class DuesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_due, only: %i[show edit update destroy]
+  before_action :admin_access, only: [:Show]
 
   # GET /dues or /dues.json
   def index
@@ -68,6 +69,6 @@ class DuesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def due_params
-    params.require(:due).permit(:purpose, :transaction_date)
+    params.require(:due).permit(:purpose, :transaction_date, :user_id, :due_type, :is_paid, :amount_due, :created_at, :updated_at)
   end
 end

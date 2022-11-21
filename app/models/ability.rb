@@ -13,6 +13,7 @@ class Ability
         can :manage, [Announcement, Office, AttendanceRecord, Event, Due]   
         can [:update, :destroy], User, email: user.email
       elsif user.role == 'member'
+        can [:create, :read], AttendanceRecord
         can [:update, :destroy], User, email: user.email
       end
     end    

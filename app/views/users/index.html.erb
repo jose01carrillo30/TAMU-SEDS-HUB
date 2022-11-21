@@ -51,6 +51,12 @@
 </div>
 
 <br>
+<a href="/users/export.csv">Export CSV</a>
+
+<%= form_tag import_users_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
 
 <div class="flex justify-center">
 <%= button_to 'New User', new_user_path, class: 'btn', method: :get %>
