@@ -1,7 +1,7 @@
 <%= form_with(model: attendance_record) do |form| %>
   <% if attendance_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(attendance_record.errors.count, "error") %> prohibited this attendance_record from being saved:</h2>
+    <div class="mb-5 text-center font-medium text-red-500" id="error_explanation">
+      <h2 class="underline uppercase"><%= pluralize(announcement.errors.count, "error") %>:</h2>
 
       <ul>
         <% attendance_record.errors.each do |error| %>
@@ -11,22 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :arriva_time %>
-    <%= form.datetime_select :arrival_time %>
+  <div class="field mb-5">
+    <%= form.label :arrival_time, class: "uppercase mb-2 font-medium" %>
+    <br>
+    <%= form.datetime_select :arrival_time, {}, class: "select select-bordered" %>
   </div>
 
- <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.order(:last_name).map { |user| [user.full_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
+ <div class="field mb-5">
+    <%= form.label :user_id, class: "uppercase mb-2 font-medium" %>
+    <%= form.select :user_id, User.order(:last_name).map { |user| [user.full_name, user.id] }, {include_blank: true, id: "id_of_the_user_id_select_box"}, class: "select select-bordered w-full max-w-xs" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-5">
     <%= form.label :event_id %>
-    <%= form.select :event_id, Event.order(:name).map { |event| [event.name, event.id] }, include_blank: true, id: "id_of_the_event_id_select_box" %>
+    <%= form.select :event_id, Event.order(:name).map { |event| [event.name, event.id] }, {include_blank: true, id: "id_of_the_event_id_select_box"}, class: "select select-bordered w-full max-w-xs"%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions flex justify-center">
+    <%= form.submit class: "btn btn-primary" %>    
   </div>
 <% end %>

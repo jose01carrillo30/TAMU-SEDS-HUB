@@ -14,6 +14,7 @@ class Ability
         can [:update, :destroy], User, email: user.email
       elsif user.role == 'member' || user.role == 'default'
         can [:update, :destroy], User, email: user.email
+        can :read, AttendanceRecord, user_id: user.id
       end
     end    
     
