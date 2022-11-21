@@ -8,12 +8,16 @@ RSpec.describe 'events/index', type: :view do
              Event.create!(
                name: 'Name',
                description: 'MyText',
-               location: 'Location'
+               location: 'Location',
+               duration: '21:05:00',
+               meeting_time: '2022-10-07 21:05:00'
              ),
              Event.create!(
                name: 'Name',
                description: 'MyText',
-               location: 'Location'
+               location: 'Location',
+               duration: '21:05:00',
+               meeting_time: '2022-10-07 21:05:00'
              )
            ])
   end
