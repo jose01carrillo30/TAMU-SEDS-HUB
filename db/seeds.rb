@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 User.where(email: "csce431sedhubauditor@gmail.com").first_or_create([
-  { first_name: "Csce431", last_name: "SedsHubAuditor", pronouns: "", classification: "", major: "", phone_number: "", uid: "100526717802015493443", avatar_url: "https://lh3.googleusercontent.com/a/ALm5wu1eQf_dcy4JnHo20vneQiXxpYJiWVfR65Bau_vy=s96-c", provider: nil, role: "admin"}
-                                                        ])
+  { first_name: "Csce431", last_name: "SedsHubAuditor", pronouns: "", 
+  classification: "", major: "", phone_number: "", uid: "100526717802015493443", 
+  avatar_url: "https://lh3.googleusercontent.com/a/ALm5wu1eQf_dcy4JnHo20vneQiXxpYJiWVfR65Bau_vy=s96-c", 
+  provider: nil, role: "admin"}
+])
                                                         
-                                                        # Announcement.create!([
+# Announcement.create!([
 #                        { send_time: '2022-10-07 21:04:00', title: 'Test Announcement', category: 'General',
 #                          contents: 'This is a test message by the development team!', office_id: nil }
 #                      ])

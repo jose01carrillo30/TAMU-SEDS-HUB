@@ -11,20 +11,24 @@ module Users
 
     def google_oauth2
       # user = User.from_omniauth(auth)
-      user = User.from_google(uid: auth.uid,
-                              email: auth.info.email,
-                              first_name: auth.info.first_name,
-                              last_name: auth.info.last_name,
-                              avatar_url: auth.info.image)
+      if (auth.role == 'admin')
+        user = User.from_omniauth(auth)
+      else
+        user = User.from_google(uid: auth.uid, 
+                              email: auth.info.email, 
+                              first_name: auth.info.first_name, 
+                              last_name: auth.info.last_name, 
+                              avatar_url: auth.info.image) 
+      end 
 
       if user.present?
         sign_out_all_scopes
         flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-        p auth.info
-        p 'Your name is'
-        p auth.info.first_name
-        p auth.info.last_name
-        p auth.info.uid
+        # p auth.info
+        # p 'Your name is'
+        # p auth.info.first_name
+        # p auth.info.last_name
+        # p auth.info.uid
         sign_in_and_redirect user, event: :authentication
       else
         flash[:alert] =

@@ -7,7 +7,9 @@ RSpec.describe 'events/edit', type: :view do
     @event = assign(:event, Event.create!(
                               name: 'MyString',
                               description: 'MyText',
-                              location: 'MyString'
+                              location: 'MyString',
+                              duration: '21:05:00',
+                              meeting_time: '2022-10-07 21:05:00'
                             ))
   end
 

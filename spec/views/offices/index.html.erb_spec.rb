@@ -6,11 +6,11 @@ RSpec.describe 'offices/index', type: :view do
   before(:each) do
     assign(:offices, [
              Office.create!(
-               name: 'Title',
+               title: 'Title',
                permissions: 'Permissions'
              ),
              Office.create!(
-               name: 'Title',
+               title: 'Title',
                permissions: 'Permissions'
              )
            ])
