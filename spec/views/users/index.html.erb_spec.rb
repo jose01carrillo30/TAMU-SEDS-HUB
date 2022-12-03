@@ -15,7 +15,7 @@ RSpec.describe 'users/index', type: :view do
                phone_number: 'Phone Number'
              ),
              User.create!(
-               email: 'Email',
+               email: 'Email2',
                first_name: 'First Name',
                last_name: 'Last Name',
                pronouns: 'Pronouns',
@@ -28,7 +28,8 @@ RSpec.describe 'users/index', type: :view do
 
   it 'renders a list of users' do
     render
-    assert_select 'tr>td', text: 'Email'.to_s, count: 2
+    assert_select 'tr>td', text: 'email'.to_s, count: 1
+    assert_select 'tr>td', text: 'email2'.to_s, count: 1
     assert_select 'tr>td', text: 'First Name'.to_s, count: 2
     assert_select 'tr>td', text: 'Last Name'.to_s, count: 2
     assert_select 'tr>td', text: 'Pronouns'.to_s, count: 2

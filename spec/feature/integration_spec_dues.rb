@@ -1,34 +1,49 @@
 # location: spec/feature/integration_spec_dues.rb
 require 'rails_helper'
 
-RSpec.describe 'Creating a due payment', type: :feature do
-  scenario 'valid inputs' do
-    visit new_dues_path
-    fill_in 'Purpose', with: 'testing due'
-    fill_in 'Transaction date', with: DateTime.new(2001, 2, 3, 4, 5, 6)
+RSpec.describe 'Dues Integration Tests', type: :feature do
+  before do
+    stub_omniauth
+    visit root_path
+    click_button "Sign In"
 
+    visit new_due_path
+    fill_in 'Purpose', with: 'Semester Due'
+    fill_in 'Transaction date', with: '2022-10-07 21:05:00'
+    select 'Csce431 SedsHubAuditor', from: 'User'
+    fill_in 'Due type', with: 'Semester'
+    fill_in 'Is paid', with: 'False'
+    fill_in 'Amount due', with: '9.99'
     click_on 'Create Due'
+  end
+  
+  scenario 'Creating Due' do
     visit dues_path
-    expect(page).to have_content('testing due')
+    expect(page).to have_content('Semester Due')
+    expect(page).to have_content('2022-10-07 21:05:00')
+    expect(page).to have_content('Csce431 SedsHubAuditor')
+    expect(page).to have_content('False')
+    expect(page).to have_content('9.99')
   end
 
-  scenario 'invalid transaction time, valid otherwise' do
-    visit new_dues_path
-    fill_in 'Purpose', with: 'testing due'
-    fill_in 'Send time', with: nil
-
-    click_on 'Create Due'
+  scenario 'Edit Due' do
+    visit edit_due_path(Due.find_by_purpose('Semester Due'))
+    fill_in 'Amount due', with: '19.99'
+    click_button "Update Due"
     visit dues_path
-    expect(page).to have_content('prohibited this due from being saved')
+    expect(page).to have_content('19.99')
   end
 
-  scenario 'invalid purpose, valid otherwise' do
-    visit new_dues_path
-    fill_in 'Purpose', with: nil
-    fill_in 'Transaction date', with: DateTime.new(2001, 2, 3, 4, 5, 6)
-
-    click_on 'Create Due'
+  scenario 'Delete Due' do
     visit dues_path
-    expect(page).to have_content('prohibited this due from being saved')
+    find('tr', text: 'Csce431 SedsHubAuditor').find(:css, '.dropdown').click_on("Delete")
+    visit dues_path
+    expect(page).to have_no_content('Semester Due')
+  end
+  
+  scenario 'Show Due' do
+    visit dues_path
+    find('tr', text: 'Csce431 SedsHubAuditor').find(:css, '.dropdown').click_on("Show")
+    expect(page).to have_content('Semester Due')
   end
 end

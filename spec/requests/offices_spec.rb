@@ -41,12 +41,12 @@ RSpec.describe '/offices', type: :request do
     end
   end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_office_url
-      expect(response).to be_successful
-    end
-  end
+  # describe 'GET /new' do
+  #   it 'renders a successful response' do
+  #     get new_office_url
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   describe 'GET /edit' do
     it 'render a successful response' do
