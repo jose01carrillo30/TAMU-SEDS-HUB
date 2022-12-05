@@ -1,5 +1,11 @@
-<h1>New Due</h1>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
+    <h1 class="text-center font-bold font-xl">New Due</h1>
 
-<%= render 'form', due: @due %>
+    <div class="flex justify-center align-center mt-5">
+        <%= render 'form', due: @due %>
+    </div>
 
-<%= link_to 'Back', dues_path %>
+    <div class="flex justify-center align-center mt-8">
+        <%= button_to 'Back', dues_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>
+</div>

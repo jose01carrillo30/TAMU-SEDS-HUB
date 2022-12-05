@@ -13,7 +13,7 @@
     <h1 class="text-lg my-5 font-bold">Events</h1>
 
 
-    <table class="table w-full">
+    <table class="table w-full table-fixed">
       <!-- head -->
       <thead>
         <tr>
@@ -28,11 +28,11 @@
       <tbody>
       <% @events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
-          <td><%= event.description %></td>
-          <td><%= event.meeting_time.strftime("%H:%M") %></td>
-          <td><%= event.location %></td>
-          <td><%= event.meeting_time.strftime("%H:%M") %></td>
+          <td class="truncate"><%= event.name %></td>
+          <td class="truncate"><%= event.description %></td>
+          <td class="truncate"><%= event.meeting_time.strftime("%H:%M") %></td>
+          <td class="truncate"><%= event.location %></td>
+          <td class="truncate"><%= event.meeting_time.strftime("%H:%M") %></td>
           <td>
           <% if can? :modify, Event %>
             <div class="dropdown">

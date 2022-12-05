@@ -12,9 +12,9 @@ class Ability
       elsif user.role == 'moderator'
         can :manage, [Announcement, Office, AttendanceRecord, Event, Due]   
         can [:update, :destroy], User, email: user.email
-      elsif user.role == 'member'
-        can [:create, :read], AttendanceRecord
+      elsif user.role == 'member' || user.role == 'default'
         can [:update, :destroy], User, email: user.email
+        can :read, AttendanceRecord, user_id: user.id
       end
     end    
     

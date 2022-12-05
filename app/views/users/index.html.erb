@@ -29,7 +29,7 @@
         <td><%= user.major %></td>
         <td><%= user.phone_number %></td>
         <td><%= user.role %></td>
-        <td>
+        <td class="text-center">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-secondary btn-xs">
               Options
@@ -51,13 +51,17 @@
 </div>
 
 <br>
-<a href="/users/export.csv">Export CSV</a>
-
-<%= form_tag import_users_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
-<% end %>
 
 <div class="flex justify-center">
 <%= button_to 'New User', new_user_path, class: 'btn', method: :get %>
 </div>
+
+<h2 class="text-lg my-5 font-bold">Export and Import</h1>
+<%= button_to 'Export CSV', "/users/export.csv", class: 'btn btn-info', method: :get %>
+
+<br>
+
+<%= form_tag import_users_path, multipart: true do %>
+  <%= file_field_tag :file, class: "file-input file-input-bordered" %>
+  <%= submit_tag "Import CSV", class: "btn btn-primary" %>
+<% end %>

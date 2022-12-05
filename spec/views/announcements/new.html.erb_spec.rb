@@ -6,7 +6,7 @@ RSpec.describe 'announcements/new', type: :view do
   before(:each) do
     assign(:announcement, Announcement.new(
                             title: 'MyString',
-                            category: 'MyString',
+                            category: 'General',
                             contents: 'MyText'
                           ))
   end
@@ -17,7 +17,7 @@ RSpec.describe 'announcements/new', type: :view do
     assert_select 'form[action=?][method=?]', announcements_path, 'post' do
       assert_select 'input[name=?]', 'announcement[title]'
 
-      assert_select 'input[name=?]', 'announcement[category]'
+      assert_select 'select[name=?]', 'announcement[category]'
 
       assert_select 'textarea[name=?]', 'announcement[contents]'
     end
