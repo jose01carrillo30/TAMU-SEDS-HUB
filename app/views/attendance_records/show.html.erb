@@ -18,5 +18,5 @@
 
    <div class="flex justify-center align-center mt-8">
       <%= button_to 'Edit', edit_attendance_record_path(@attendance_record), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, AttendanceRecord %> |    
-      <%= button_to 'Show', @attendance_record, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+      <%= button_to 'Back', attendance_records_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
     </div>

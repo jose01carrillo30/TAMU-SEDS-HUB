@@ -32,6 +32,6 @@
 
    <div class="flex justify-center align-center mt-8">
       <%= button_to 'Edit', edit_announcement_path(@announcement), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, Announcement %> |    
-      <%= button_to 'Show', @announcement, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+      <%= button_to 'Back', events_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
     </div>
 </div>
