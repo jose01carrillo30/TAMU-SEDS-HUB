@@ -1,12 +1,12 @@
 <div class="simple-calendar">
   <div class="flex justify-center mb-5">
-    <button class="btn btn-outline btn-sm"> 
+    <button class="btn text-red-100 btn-outline btn-sm"> 
       <%= link_to t('simple_calendar.previous', default: 'Prev'), calendar.url_for_previous_view %>
     </button>
 
-    <span class="calendar-title font-bold mx-5 underline"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <span class="calendar-title font-bold text-red-100 mx-5 underline"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
 
-    <button class="btn btn-outline btn-sm"> 
+    <button class="btn text-red-100 btn-outline btn-sm"> 
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
     </button>
     </div>

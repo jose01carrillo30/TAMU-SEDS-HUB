@@ -10,7 +10,7 @@
   </div>
 
   <div x-show="!showCalendar">
-    <h1 class="text-lg my-5 font-bold">Events</h1>
+    <h1 class="text-lg text-red-100 my-5 font-bold">Events</h1>
 
 
     <table class="table w-full table-fixed">
@@ -66,7 +66,7 @@
 
   <div x-show="showCalendar" class="mb-5 mx-auto">
 
-  <h1 class="text-lg my-5 font-bold">Event Calendar</h1>
+  <h1 class="text-lg my-5 text-red-100 font-bold">Event Calendar</h1>
 
     <%= month_calendar(events: @events, attribute: :meeting_time) do |date, events| %>
       <%= date.day %>
