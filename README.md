@@ -18,13 +18,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
@@ -42,7 +41,7 @@
     <a href="https://github.com/jose01carrillo30/TAMU-SEDS-HUB"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/jose01carrillo30/TAMU-SEDS-HUB">View Demo</a>
+    <a href="https://tamu-seds.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/jose01carrillo30/TAMU-SEDS-HUB/issues">Report Bug</a>
     ·
@@ -81,11 +80,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This repository holds the source code for the TAMU SEDS Administration webpage.
 
-This project is apart of the CSCE 431 Software Engineering class using the AGILE devleopement process.
+This project is a part of the CSCE 431 Software Engineering class using the AGILE devleopement process.
 
 Project Description: "You will work in a project group to complete a project, through an application of an engineering approach to computer software design and development. Every project requires complete implementation, documentation, and demonstration of the solution. The focus is not only on the final product but also on design methodology, management process, and teamwork. At the end of the semester, each group will make a public presentation to the class describing and demonstrating their work."
 
@@ -99,7 +96,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * [![Rails][Rails.org]][Rails-url]
 * [![Postgres][Postgres.org]][Postgres-url]
-* [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -161,8 +157,8 @@ http://127.0.0.1:3000
 
 - [x] Sprint 1
 - [x] Sprint 2
-- [ ] Sprint 3
-- [ ] (Add items)
+- [x] Sprint 3
+- [ ] Project Turnover - *In Progress*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -207,14 +203,11 @@ Project Link: [https://github.com/jose01carrillo30/TAMU-SEDS-HUB/](https://githu
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
 * [Malven's Grid Cheatsheet](https://grid.malven.co/)
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -222,15 +215,15 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/jose01carrillo30/TAMU-SEDS-HUB.svg?style=for-the-badge
 [contributors-url]: https://github.com/jose01carrillo30/TAMU-SEDS-HUB/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/jose01carrillo30/TAMU-SEDS-HUB.svg?style=for-the-badge
 [forks-url]: https://github.com/jose01carrillo30/TAMU-SEDS-HUB/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/jose01carrillo30/TAMU-SEDS-HUB.svg?style=for-the-badge
 [stars-url]: https://github.com/jose01carrillo30/TAMU-SEDS-HUB/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/jose01carrillo30/TAMU-SEDS-HUB.svg?style=for-the-badge
 [issues-url]: https://github.com/jose01carrillo30/TAMU-SEDS-HUB/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/jose01carrillo30/TAMU-SEDS-HUB.svg?style=for-the-badge
 [license-url]: https://github.com/jose01carrillo30/TAMU-SEDS-HUB/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/
