@@ -7,6 +7,9 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].join(" ")
   end
+
+  before_destroy  :destroy_my_attendance_records
+
   # validates :email, uniqueness: true
   validates_uniqueness_of :email
   # Include default devise modules. Others available are:
@@ -50,5 +53,10 @@ class User < ApplicationRecord
         obj.update(row.to_hash.compact)
       end
     end
+  end
+
+  private
+  def destroy_my_attendance_records 
+    self.attendance_records.destroy_all
   end
 end

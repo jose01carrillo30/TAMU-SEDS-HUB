@@ -52,7 +52,7 @@
                 <div class="dropdown dropdown-end">
                   <label tabindex="0" class="btn ml-1 btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
-                      <%= image_tag(current_user.avatar_url) %>
+                      <%= image_tag(current_user.avatar_url) if current_user.avatar_url?%>
                     </div>
                   </label>
                   <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
@@ -131,7 +131,7 @@
               <label tabindex="0" class="btn mt-1 btn-ghost">
                 <div class="avatar mr-2 -ml-1">
                   <div class="w-10 rounded-full">
-                    <%= image_tag(current_user.avatar_url) %>
+                    <%= image_tag(current_user.avatar_url) if current_user.avatar_url? %>
                   </div>
                 </div>
                 <%= current_user.full_name%>
