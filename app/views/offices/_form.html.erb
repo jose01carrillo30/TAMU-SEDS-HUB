@@ -1,7 +1,7 @@
 <%= form_with(model: office) do |form| %>
   <% if office.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
+    <div class="mb-5 text-center font-medium text-red-500" id="error_explanation">
+      <h2 class="underline uppercase"><%= pluralize(office.errors.count, "error") %>:</h2>
 
       <ul>
         <% office.errors.each do |error| %>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field mb-5">
+    <%= form.label :title, class: "uppercase mb-2 font-medium" %>
+    <%= form.text_field :title, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :permissions %>
-    <%= form.text_field :permissions %>
+  <div class="field mb-5">
+    <%= form.label :permissions, class: "uppercase mb-2 font-medium" %>
+    <%= form.text_field :permissions, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions flex justify-center">
+    <%= form.submit class: "btn btn-primary" %>    
   </div>
 <% end %>
