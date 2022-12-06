@@ -1,7 +1,7 @@
 <%= form_with(model: attendance_record) do |form| %>
   <% if attendance_record.errors.any? %>
     <div class="mb-5 text-center font-medium text-red-500" id="error_explanation">
-      <h2 class="underline uppercase"><%= pluralize(announcement.errors.count, "error") %>:</h2>
+      <h2 class="underline uppercase"><%= pluralize(attendance_record.errors.count, "error") %>:</h2>
 
       <ul>
         <% attendance_record.errors.each do |error| %>

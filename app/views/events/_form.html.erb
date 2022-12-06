@@ -11,41 +11,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field mt-2">
+    <%= form.label :name, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :name, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="field mt-2">
+    <%= form.label :description, class: "uppercase my-2 font-medium" %>
+    <%= form.text_area :description, class: "textarea textarea-bordered w-full max-w-xs" %>
   </div>
 
-  <div class="field">
-    <%= form.label :meeting_time %>
+  <div class="field mt-2">
+    <%= form.label :meeting_time, class: "uppercase my-2 font-medium" %>
     <%= form.datetime_field :meeting_time %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+  <div class="field mt-2">
+    <%= form.label :location, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :location, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
   <div class="field">
-    <%= form.label :duration %>
-    <%= form.time_select :duration %>
+    <%= form.label :duration, class: "uppercase my-2 font-medium" %>
+    <%= form.time_select :duration, class: "select select-bordered w-full max-w-xs" %>
   </div>
 
-  <div class="field">
+  <div class="field my-5">
+  <%= form.label :image, class: "uppercase my-2 font-medium" %>
   <% if @event.image.attached? %>
-    <%= image_tag @event.image, style: "width: 200px; display: block" %>
+    <div class="flex justify-center">
+    <%= image_tag @event.image, class: "w-52 rounded-lg drop-shadow-md mb-2" %>
+    </div>
   <% end %>
 
-  <%= form.label :image %>
-  <%= form.file_field :image, class: "form-control" %>
+  <%= form.file_field :image, class: "form-control file-input file-input-bordered w-full max-w-xs" %>
 </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions flex justify-center mt-5">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
