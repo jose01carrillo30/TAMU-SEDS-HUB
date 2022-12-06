@@ -70,8 +70,7 @@ class UsersController < ApplicationController
 
   def import
     User.import(params[:file])
-    redirect_to root_url, notice: "I want to cry"
-    p 'import called successfilly!'
+    redirect_to root_url, notice: "User data import completed."
   end
 
   private
