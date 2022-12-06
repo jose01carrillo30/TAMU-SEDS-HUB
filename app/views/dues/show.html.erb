@@ -2,46 +2,51 @@
 
 <h1 class="text-lg my-5 font-bold">Dues</h1>
 
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
 
-<p>
-  <strong>Purpose:</strong>
-  <%= @due.purpose %>
-</p>
+  <p>
+    <strong>Purpose:</strong>
+    <%= @due.purpose %>
+  </p>
 
-<p>
-  <strong>Transaction Date:</strong>
-  <%= @due.transaction_date %>
-</p>
+  <p>
+    <strong>Transaction Date:</strong>
+    <%= @due.transaction_date %>
+  </p>
 
-<p>
-  <strong>Member ID:</strong>
-  <%= @due.user_id %>
-</p>
+  <p>
+    <strong>Member ID:</strong>
+    <%= @due.user_id %>
+  </p>
 
-<p>
-  <strong>Payment Type:</strong>
-  <%= @due.due_type %>
-</p>
+  <p>
+    <strong>Payment Type:</strong>
+    <%= @due.due_type %>
+  </p>
 
-<p>
-  <strong>Is Paid:</strong>
-  <%= @due.is_paid %>
-</p>
+  <p>
+    <strong>Is Paid:</strong>
+    <%= @due.is_paid %>
+  </p>
 
-<p>
-  <strong>Amount Due:</strong>
-  <%= @due.amount_due %>
-</p>
+  <p>
+    <strong>Amount Due:</strong>
+    <%= @due.amount_due %>
+  </p>
 
-<p>
-  <strong>Created At:</strong>
-  <%= @due.created_at %>
-</p>
+  <p>
+    <strong>Created At:</strong>
+    <%= @due.created_at %>
+  </p>
 
-<p>
-  <strong>Updated At:</strong>
-  <%= @due.updated_at %>
-</p>
+  <p>
+    <strong>Updated At:</strong>
+    <%= @due.updated_at %>
+  </p>
 
-<%= link_to 'Edit', edit_due_path if can? :update, Due %>
-<%= link_to 'Back', dues_path %>
+  <div class="flex justify-center align-center mt-8">
+    <%= button_to 'Edit', edit_due_path(@due), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, Due %> |    
+    <%= button_to 'Show', @due, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+  </div>
+
+</div>

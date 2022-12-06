@@ -1,36 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </p>
 
-<p>
-  <strong>Meeting time:</strong>
-  <%= @event.meeting_time.strftime("%H:%M") %>
-</p>
+  <p>
+    <strong>Meeting time:</strong>
+    <%= @event.meeting_time.strftime("%H:%M") %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @event.duration.strftime("%H:%M") %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @event.duration.strftime("%H:%M") %>
+  </p>
 
-<p>
-  <strong>Image:</strong>
-  <% if @event.image.attached? %>
-  <%= image_tag @event.image, style: "wisth: 250px;" %>
-  <% end %>
-</p>
+  <p>
+    <strong>Image:</strong>
+    <% if @event.image.attached? %>
+    <%= image_tag @event.image, style: "wisth: 250px;" %>
+    <% end %>
+  </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+    <div class="flex justify-center align-center mt-8">
+      <%= button_to 'Back', events_path, class: "btn btn-error btn-outline btn-xs", method: :get %> |    
+      <%= button_to 'Show', @event, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>
+  </div>
