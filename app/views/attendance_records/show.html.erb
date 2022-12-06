@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
+  <p>
+    <strong>Arrival time:</strong>
+    <%= @attendance_record.arrival_time %>
+  </p>
 
-<p>
-  <strong>Arrival time:</strong>
-  <%= @attendance_record.arrival_time %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= User.where(id: @attendance_record.user_id)&.last&.full_name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= User.where(id: @attendance_record.user_id).last.full_name %>
-</p>
+  <p>
+    <strong>Event:</strong>
+    <%= Event.where(id: @attendance_record.event_id).last.name %>
+  </p>
+</div>
 
-<p>
-  <strong>Event:</strong>
-  <%= Event.where(id: @attendance_record.event_id).last.name %>
-</p>
-
-<%= link_to 'Edit', edit_attendance_record_path(@attendance_record) %> |
-<%= link_to 'Back', attendance_records_path %>
+   <div class="flex justify-center align-center mt-8">
+      <%= button_to 'Edit', edit_attendance_record_path(@attendance_record), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, AttendanceRecord %> |    
+      <%= button_to 'Back', attendance_records_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>

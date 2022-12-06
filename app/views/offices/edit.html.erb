@@ -1,6 +1,12 @@
-<h1>Editing Office</h1>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
+<h1 class="text-center font-bold font-xl">Editing Office</h1>
 
+<div class="flex justify-center align-center mt-5">
 <%= render 'form', office: @office %>
+</div>
 
-<%= link_to 'Show', @office %> |
-<%= link_to 'Back', offices_path %>
+<div class="flex justify-center align-center mt-8">
+<%= button_to 'Back', offices_path, class: "btn btn-error btn-outline btn-xs", method: :get %> |    
+<%= button_to 'Show', @office, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+</div>
+</div>

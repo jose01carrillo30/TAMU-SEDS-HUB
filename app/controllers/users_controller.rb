@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'csv'
 
 class UsersController < ApplicationController
   load_and_authorize_resource
@@ -67,6 +68,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def import
+    User.import(params[:file])
+    redirect_to root_url, notice: "User data import completed."
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -76,6 +82,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :pronouns, :classification, :major, :phone_number, :role)
+    params.require(:user).permit(:email, :first_name, :last_name, :pronouns, :classification, :major, :phone_number, :role)
   end
 end

@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @office.title %>
-</p>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
 
-<p>
-  <strong>Permissions:</strong>
-  <%= @office.permissions %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @office.title %>
+  </p>
 
-<%= link_to 'Edit', edit_office_path(@office) %> |
-<%= link_to 'Back', offices_path %>
+  <p>
+    <strong>Permissions:</strong>
+    <%= @office.permissions %>
+  </p>
+
+   <div class="flex justify-center align-center mt-8">
+      <%= button_to 'Edit', edit_office_path(@office), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, Office %> |    
+      <%= button_to 'Back', offices_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>
+  </div>

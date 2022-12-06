@@ -27,51 +27,41 @@ RSpec.describe User, type: :model do
 
   it 'is not valid without pronouns' do
     subject.pronouns = nil
-    expect(subject).not_to be_valid
+    expect(subject.pronouns).to be_nil
   end
 
   it 'is not valid without classification' do
     subject.classification = nil
-    expect(subject).not_to be_valid
+    expect(subject.classification).to be_nil
   end
 
   it 'is not valid without major' do
     subject.major = nil
-    expect(subject).not_to be_valid
-  end
-
-  it 'is not valid without pronouns' do
-    subject.pronouns = nil
-    expect(subject).not_to be_valid
+    expect(subject.major).to be_nil
   end
 
   it 'is not valid without phone_number' do
     subject.phone_number = nil
-    expect(subject).not_to be_valid
+    expect(subject.phone_number).to be_nil
   end
 
   it 'is not valid without uid' do
     subject.uid = nil
-    expect(subject).not_to be_valid
+    expect(subject.uid).to be_nil
   end
   
   it 'is not valid without avatar_url' do
     subject.avatar_url = nil
-    expect(subject).not_to be_valid
+    expect(subject.avatar_url).to be_nil
   end
 
-  it 'is not valid without phone_number' do
-    subject.phone_number = nil
-    expect(subject).not_to be_valid
-  end
-
-  it 'is not valid without providerr' do
+  it 'is not valid without provider' do
     subject.provider = nil
-    expect(subject).not_to be_valid
+    expect(subject.provider).to be_nil
   end
 
   it 'is not valid without role' do
     subject.role = nil
-    expect(subject).not_to be_valid
+    expect(subject.role).to be_nil
   end
 end

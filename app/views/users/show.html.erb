@@ -1,44 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <p>
+    <strong>First name:</strong>
+    <%= @user.first_name %>
+  </p>
 
-<p>
-  <strong>Pronouns:</strong>
-  <%= @user.pronouns %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @user.last_name %>
+  </p>
 
-<p>
-  <strong>Classification:</strong>
-  <%= @user.classification %>
-</p>
+  <p>
+    <strong>Pronouns:</strong>
+    <%= @user.pronouns %>
+  </p>
 
-<p>
-  <strong>Major:</strong>
-  <%= @user.major %>
-</p>
+  <p>
+    <strong>Classification:</strong>
+    <%= @user.classification %>
+  </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @user.phone_number %>
-</p>
+  <p>
+    <strong>Major:</strong>
+    <%= @user.major %>
+  </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <p>
+    <strong>Phone number:</strong>
+    <%= @user.phone_number %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) if can? :update, User %> |
-<%= link_to 'Back', users_path %>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
+
+    <div class="flex justify-center align-center mt-8">
+      <%= button_to 'Edit', edit_user_path(@user), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, User %> |    
+      <%= button_to 'Show', @user, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>
+  </div>

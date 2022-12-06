@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Due, type: :model do
   subject do
-    described_class.new(purpose: 'you owe $12', transaction_date: DateTime.new(2022, 10, 26, 4, 5, 6), created_at: DateTime.new(2022, 10, 22, 4, 5, 6), updated_at: DateTime.new(2022, 10, 26, 4, 5, 6), amount_due: '11.99', amount_paid: '0', user_id: '1')
+    described_class.new(purpose: 'you owe $12', amount_due: '11.99', due_type: 'Semster', is_paid: 'True', user_id: '1', transaction_date: DateTime.new(2022, 10, 26, 4, 5, 6), created_at: DateTime.new(2022, 10, 22, 4, 5, 6), updated_at: DateTime.new(2022, 10, 26, 4, 5, 6))
   end
 
   it 'is valid with valid attributes' do
@@ -20,13 +20,18 @@ RSpec.describe Due, type: :model do
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a amount_due' do
+  it 'is not valid without amount_due' do
     subject.amount_due = nil
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without amount_due' do
-    subject.amount_due = nil
+  it 'is not valid without is_paid' do
+    subject.is_paid = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without due_type' do
+    subject.due_type = nil
     expect(subject).not_to be_valid
   end
 

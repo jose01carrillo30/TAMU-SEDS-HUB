@@ -33,6 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :view
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -63,4 +64,25 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: "",
+    role: "admin",
+    info: {
+      :first_name => "Csce431",
+      :last_name => "SedsHubAuditor",
+      :uid => "100526717802015493443",
+      :image => "https://lh3.googleusercontent.com/a/ALm5wu1eQf_dcy4JnHo20vneQiXxpYJiWVfR65Bau_vy=s96-c",
+      :email => "csce431sedhubauditor@gmail.com",
+    },
+    :credentials => {
+    :role => "admin",
+    :token => "token",
+    :secret => "secret"
+  }
+  })
 end

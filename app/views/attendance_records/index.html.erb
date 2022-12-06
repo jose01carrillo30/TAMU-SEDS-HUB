@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <% if can? :modify, AttendanceRecord%>
-<h1 class="text-lg my-5 font-bold">Attendance Records</h1>
+<h1 class="text-lg text-red-100 my-5 font-bold">Attendance Records</h1>
 <%else%>
-<h1 class="text-lg my-5 font-bold">Your Attendance Records</h1>
+<h1 class="text-lg text-red-100 my-5 font-bold">Your Attendance Records</h1>
 <%end%>
 
 
 <div>
-  <table class="table w-full">
+  <table class="table w-full table-fixed">
     <!-- head -->
     <thead>
     <tr>
@@ -22,10 +22,10 @@
     <%if can? :modify, AttendanceRecord %>
       <% @attendance_records.each do |attendance_record| %>
         <tr>
-          <td><%= attendance_record.arrival_time %></td>
-          <td><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
-          <td><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
-          <td>
+          <td class="truncate"><%= attendance_record.arrival_time %></td>
+          <td class="truncate"><%= User.where(id: attendance_record.user_id)&.last&.full_name %></td>
+          <td class="truncate"><%= Event.where(id: attendance_record.event_id)&.last&.name %></td>
+          <td class="text-center">
             <div class="dropdown">
               <label tabindex="0" class="btn btn-secondary btn-xs">
                 Options

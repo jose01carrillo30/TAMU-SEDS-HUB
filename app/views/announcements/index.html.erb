@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-lg my-5 font-bold">Announcements</h1>
+<h1 class="text-lg text-red-100 my-5 font-bold">Announcements</h1>
 
 
 <div>
@@ -16,10 +16,10 @@
     <tbody>
     <% @announcements.reverse_each do |announcement| %>
       <tr>
-        <td><%= announcement.title %></td>
-        <td><%= announcement.category %></td>
+        <td class="truncate"><%= announcement.title %></td>
+        <td class="truncate"><%= announcement.category %></td>
         <td class="truncate"><%= announcement.contents %></td>
-        <td>
+        <td class="text-center">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-secondary btn-xs">
               Options

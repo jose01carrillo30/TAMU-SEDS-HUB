@@ -1,7 +1,7 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div class="mb-5 text-center font-medium text-red-500" id="error_explanation">
+      <h2 class="underline uppercase"><%= pluralize(user.errors.count, "error") %>:</h2>
 
       <ul>
         <% user.errors.each do |error| %>
@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div>
-    <%= "Email" %><br>
-    <%= user.email %>
-  </div><br>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="field mb-5">
+    <%= form.label :email, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :email, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="field mb-5">
+    <%= form.label :first_name, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :first_name, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :pronouns %>
-    <%= form.text_field :pronouns %>
+  <div class="field mb-5">
+    <%= form.label :last_name, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :last_name, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :classification %>
-    <%= form.text_field :classification %>
+  <div class="field mb-5">
+    <%= form.label :pronouns, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :pronouns, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :major %>
-    <%= form.text_field :major %>
+  <div class="field mb-5">
+    <%= form.label :classification, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :classification, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+  <div class="field mb-5">
+    <%= form.label :major, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :major, class: "input w-full max-w-xs input-bordered" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-5">
+    <%= form.label :phone_number, class: "uppercase my-2 font-medium" %>
+    <%= form.text_field :phone_number, class: "input w-full max-w-xs input-bordered" %>
+  </div>
+
+  <div class="field mb-5">
     <%= form.label :role if can? :manage, User %>
-    <%= form.select :role, [['Admin', 'admin'],['Moderator', 'moderator'], ['Member','member']] if can? :manage, User %>
+    <%= form.select :role, [['Admin', 'admin'],['Moderator', 'moderator'], ['Member','member']], {}, class:'select select-bordered w-full max-w-xs' if can? :manage, User %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="actions flex justify-center">
+    <%= form.submit class: "btn btn-primary" %>    
   </div>
 <% end %>

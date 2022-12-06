@@ -1,36 +1,37 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <h1>
+<div class="rounded-xl border p-5 w-96 mx-auto shadow-md bg-gradient-to-r from-slate-200 to-slate-50">
+  <h1 class="text-lg">
     <%= @announcement.title %>
   </h1>
-</p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @announcement.category %>
-</p>
+  <p>
+    <strong>Category:</strong>
+    <%= @announcement.category %>
+  </p>
 
-<p>
-  <strong>Contents:</strong>
-  <%= @announcement.contents %>
-</p>
+  <p>
+    <strong>Contents:</strong>
+    <%= @announcement.contents %>
+  </p>
 
-<p>
-  <small>
-    Created by 
-    <%= @announcement.office_id %> on 
-    <%= @announcement.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
-  </small>
-</p>
+  <p>
+    <small>
+      Created by 
+      <%= @announcement.office_id %> on 
+      <%= @announcement.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
+    </small>
+  </p>
 
-<p>
-  <small>
-  Last edited by 
-  <%= @announcement.editor_id %> on 
-  <%= @announcement.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
-  </small>
-</p>
+  <p>
+    <small>
+    Last edited by 
+    <%= @announcement.editor_id %> on 
+    <%= @announcement.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y at %I:%M %p") %>.
+    </small>
+  </p>
 
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+   <div class="flex justify-center align-center mt-8">
+      <%= button_to 'Edit', edit_announcement_path(@announcement), class: "btn btn-error btn-outline btn-xs", method: :get if can? :update, Announcement %> |    
+      <%= button_to 'Back', events_path, class: "btn btn-secondary btn-outline btn-xs", method: :get %>
+    </div>
+</div>

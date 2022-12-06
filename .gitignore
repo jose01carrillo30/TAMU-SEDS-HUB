@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.dump
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
@@ -41,3 +42,9 @@ yarn-debug.log*
 /.vscode
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
