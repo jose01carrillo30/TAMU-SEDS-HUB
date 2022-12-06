@@ -7,7 +7,7 @@
 
   <p>
     <strong>Name:</strong>
-    <%= attendance_record.where(id: @attendance_record.attendance_record_id).last.full_name %>
+    <%= User.where(id: @attendance_record.user_id)&.last&.full_name %>
   </p>
 
   <p>
