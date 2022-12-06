@@ -3,12 +3,13 @@
 class User < ApplicationRecord
   validates :email, :first_name, :last_name, presence: true
   has_many :attendance_records
+  has_many :dues
   has_many :events, through: :attendance_records
   def full_name
     [first_name, last_name].join(" ")
   end
 
-  before_destroy  :destroy_my_attendance_records
+  before_destroy  :destroy_children
 
   # validates :email, uniqueness: true
   validates_uniqueness_of :email
@@ -56,7 +57,8 @@ class User < ApplicationRecord
   end
 
   private
-  def destroy_my_attendance_records 
+  def destroy_children 
     self.attendance_records.destroy_all
+    self.dues.destroy_all
   end
 end
