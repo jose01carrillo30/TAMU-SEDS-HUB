@@ -64,11 +64,18 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#external-dependencies">External Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#tests">Tests</a></li>
+        <li><a href="#execute-your-code">Execute your code</a></li>
       </ul>
     </li>
     <li><a href="#features">Features</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#environment-variables-and-files">Environment Variables and Files</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href='#continuous-integration-and-continuous-delivery'>Continuous Integration and Continuous Delivery</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -92,10 +99,11 @@ Project Description: "You will work in a project group to complete a project, th
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Our project was built primarily using the below technologies. Rails and Postgres form the backbone of our application, with other dependencies that we used being outlined under the [External Dependencies](#external-dependencies) section.
 
-* [![Rails][Rails.org]][Rails-url]
-* [![Postgres][Postgres.org]][Postgres-url]
+* [![Rails][Rails.org]][Rails-url] - Ruby On Rails is the backbone of our application, creating a seamless link between our frontend and our data inside our database.
+
+* [![Postgres][Postgres.org]][Postgres-url] - Postgres is an easy-to-use database system where our data is being stored for our application.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,12 +115,30 @@ This section should list any major frameworks/libraries used to bootstrap your p
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
+### Requirements
+Here's what you need to get started on installing this project:
+- [Docker](https://docs.docker.com/get-docker/) - Our application was built using Ruby On Rails within a Docker container, so you first need docker.
+- [Git](https://git-scm.com/download) - For local version control
+- [Visual Studio Code](https://code.visualstudio.com/download) - not mandatory, but very helpful for code editing
+
+
+### External Dependencies
+Here's a couple of external dependencies that our project uses.
+- [CanCanCan](https://github.com/CanCanCommunity/cancancan)
+- [TailwindCSS](https://tailwindcss.com/)
+- [OmniAuth](https://github.com/omniauth/omniauth)
+- [Omniauth-google-oauth2](https://github.com/zquestz/omniauth-google-oauth2)
+- [Devise](https://github.com/heartcombo/devise)
+- [CSSBundling-Rails](https://github.com/rails/cssbundling-rails)
+- [Simple Calendar](https://github.com/excid3/simple_calendar)
+
+
 ### Installation
 
 This is an example of how you can install and setting up the app locally.
 * Clone Repo
   ```sh
-  git clone git@github.com:juliendargelos/project.git
+  git clone https://github.com/jose01carrillo30/TAMU-SEDS-HUB.git
   cd project
   ```
 * Download Docker Cotainer
@@ -123,6 +149,10 @@ This is an example of how you can install and setting up the app locally.
   ```sh
   docker run --rm -it --volume "${PWD}:/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 dmartinez05/ruby_rails_postgresql:latest
   ```
+* Change Directory
+  ```sh
+  cd csce431
+  ```
 * Instantiate the database
   ```sh
   rails db:create
@@ -130,12 +160,67 @@ This is an example of how you can install and setting up the app locally.
   ```
 * Run the app
   ```sh
-  rails server --binding=0.0.0.0
+  ./bin/dev
   ```
 Check in the browser:
 http://127.0.0.1:3000
 
+Happy coding!
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Tests
+Testing for our application was accomplished utilizing [RSpec](https://github.com/rspec/rspec-rails). We created integration tests for app-wide integration, and unit tests to test each entity of our application.
+- Unit tests are located in [spec/unit](/spec/unit)
+- Integration tests are located in [spec/feature](/spec/feature)
+
+Below is an example of a unit test for our application. Use it to model your own tests!
+```ruby
+RSpec.describe Event, type: :model do
+  subject do
+    described_class.new(name: 'Meeting', description: 'First SEDS Meeting of the Semester', meeting_time: DateTime.new(2022, 10, 28, 4, 5, 6), location: 'Annex 229', duration: '10:00:00', created_at: DateTime.new(2022, 10, 22, 4, 5, 6), updated_at: DateTime.new(2022, 10, 26, 4, 5, 6))
+  end
+
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+  
+  it 'is not valid without a name' do
+    subject.name = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a description' do
+    subject.description = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a meeting_time' do
+    subject.meeting_time = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without location' do
+    subject.location = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without duration' do
+    subject.duration = nil
+    expect(subject).not_to be_valid
+  end
+end
+```
+### Execute your code
+Once you have everything set up, simply run the code below and you'll have a working version of our application. Run these commands every time for local deployment, and you'll be good to go!
+
+1. ```cd project```
+
+2. ```docker run --rm -it --volume "${PWD}:/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 dmartinez05/ruby_rails_postgresql:latest```
+
+3. ```cd csce431```
+
+4. ```./bin/dev```
 
 
 
@@ -163,6 +248,56 @@ http://127.0.0.1:3000
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- ENVIRONMENT VARIABLES AND FILES -->
+## Environment Variables and Files
+In order for Google OAuth to work correctly, you need to first set up a Google Cloud account and get Credential access. Follow [this guide](https://medium.com/@jenn.leigh.hansen/google-oauth2-for-rails-ba1bcfd1b863) (up until implementing OAuth in Ruby, as our project covers that) on how to get started.
+You'll need to create a ```.env``` file that looks like this:
+```
+GOOGLE_CLIENT_ID=XXXXXXX
+GOOGLE_CLIENT_SECRET=XXXXXXX
+```
+Both of these can be found in your Credentials Console. Replace the X's with the values it tells you.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- DEPLOYMENT -->
+## Deployment
+We used Heroku to deploy our application.
+
+**PLEASE NOTE:** *Heroku no longer offers a free teir for deployment, so you'll need to pay if you plan to deploy your own version of our application on Heroku.*
+
+Click below to deploy to Heroku automatically!
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Manual Deployment
+1. First, [install the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) and create a Heroku account
+2. [Fork our repo](https://github.com/jose01carrillo30/TAMU-SEDS-HUB/fork)
+3. Create a new Heroku application (run this in your git project directory) - ```heroku create -a example-app```
+4. Push your code to Heroku - ```git push heroku main```
+5. Happy coding!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTINUOUS INTEGRATION, CONTINUOUS DELIVERY -->
+## Continuous Integration and Continuous Delivery
+Our applicated utilizes Heroku's Continuous Delivery features, as well as Continuous Integration through Github Actions.
+For a guide on how to setup Continuous Delivery for your own project, visit [this link](https://www.heroku.com/continuous-delivery).
+
+For our project, we utilize Heroku's Pipelining feature. Any changes to our *test branch* result in a sandbox environment that is deployed to Heroku. When we merge changes into our **master branch**, a staging environment is created (with it's own URL) that we can then promote to production, utilizing the main URL we designated for our project. This allows us to develop and have several environments in which to test our code.
+
+For Continuous Integration, we utilized Github Actions for this. The workflow is as follows:
+1. Setup a basic Rails environment
+2. Run our integration and unit tests through RSpec and upload results
+3. Run security tests through Brakeman and upload results
+4. Run Rubocop to automatically clean our code and make sure we are maintaining coding standards
+5. Upload the SimpleCov report for our coverage
+
+These actions are run on every *push* and every *pull request* on any branch.
+
+To view our integration process in depth, take a look at our [.github/workflows/workflow.yml](.github/workflows/workflow.yml) file.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
