@@ -43,13 +43,13 @@
                 </svg>
               </label>
               <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><%= link_to 'Show', event %></li>
+              <li><%= link_to 'View', event %></li>
               <li><%= link_to 'Edit', edit_event_path(event) if can? :update, Event %></li>
               <li><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Event %></li>
               </ul>
             </div>
-          <% elsif current_user %>
-          <%= button_to 'Sign In', attendance_records_path, params: {arrival_time: DateTime.now, event_id: event.id, user_id: current_user.id}, method: :post, class: 'btn btn-primary btn-xs'%>
+          <% else %>
+          <%= button_to 'View', event, method: :get, class: 'btn btn-primary btn-xs'%>
           <% end %>
           </td>
         </tr>

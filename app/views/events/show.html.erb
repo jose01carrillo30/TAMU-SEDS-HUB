@@ -26,6 +26,12 @@
     <%= @event.duration.strftime("%H:%M") %>
   </p>
 
+  <% if current_user %>
+    <%= button_to 'Sign In', attendance_records_path, params: {arrival_time: DateTime.now, event_id: @event.id, user_id: current_user.id}, method: :post, class: 'btn btn-primary btn-xs'%>
+  <% else %>
+    <p> <br>Sign in to record your attendance<br> </p>
+  <% end %>
+
   <p>
     <strong>Image:</strong>
     <% if @event.image.attached? %>
